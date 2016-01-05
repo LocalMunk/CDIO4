@@ -60,7 +60,7 @@ public class LaborCamp extends Ownable
 			{
 				owned = true;
 				owner = player;
-				GUI.setOwner(fieldnumber + 1, owner.getName());
+				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 				player.setLaborCampsOwned(player.getLaborCampsOwned() + 1);

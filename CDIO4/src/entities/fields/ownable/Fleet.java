@@ -7,7 +7,7 @@ import game.Player;
 public class Fleet extends Ownable
 {
 	/**
-	 * Sets up diffrent rents
+	 * Sets up different rents
 	 */
 //	private final int RENT_1 = 500;
 //	private final int RENT_2 = 1000;
@@ -65,7 +65,7 @@ public class Fleet extends Ownable
 				owner = player;
 				GUI.showMessage("You are the proud owner of this.");
 				player.addFieldsOwned();
-				GUI.setOwner(fieldnumber + 1, owner.getName());
+				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			}

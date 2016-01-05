@@ -1,11 +1,17 @@
 package entities.fields;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Ownable;
 import game.Dice;
 import game.Player;
 
 public class Brewery extends Ownable
 {
+
+	public Brewery(String name, String description, int fieldID, int price) {
+		super(name, description, fieldID, price);
+		// TODO Auto-generated constructor stub
+	}
 
 	private int price;
 	private Dice dice = new Dice(6);
@@ -18,12 +24,6 @@ public class Brewery extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public Brewery(int a, int b)
-	{
-		price = a;
-		fieldnumber = b;
-		owned = false;
-	}
 
 	@Override
 	public int getRent()
@@ -60,7 +60,7 @@ public class Brewery extends Ownable
 			{
 				owned = true;
 				owner = player;
-				GUI.setOwner(fieldnumber + 1, owner.getName());
+				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 				player.setLaborCampsOwned(player.getLaborCampsOwned() + 1);
