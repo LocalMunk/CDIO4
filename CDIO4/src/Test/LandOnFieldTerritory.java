@@ -6,15 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+<<<<<<< HEAD
 import entities.fields.ownable.LaborCamp;
 import entities.fields.ownable.Territory;
+=======
+import Fields.Brewery;
+import Fields.Property;
+>>>>>>> 55faa3ee7a20ae435203cf56ba78d8770efe71c7
 import game.Player;
 
 public class LandOnFieldTerritory
 {
 
 	private Player player, player2, player3;
-	private Territory territory1;
+	private Property territory1;
 
 	@Before
 
@@ -23,7 +28,7 @@ public class LandOnFieldTerritory
 		this.player = new Player("Bob", 500, true);
 		this.player2 = new Player("Henrik", 5000, true);
 		this.player3 = new Player("Bo", 5000, true);
-		this.territory1 = new Territory(100, 1000, "Tribe Encampment", 1);
+		this.territory1 = new Property(100, 1000, "Tribe Encampment", 1);
 
 	}
 
