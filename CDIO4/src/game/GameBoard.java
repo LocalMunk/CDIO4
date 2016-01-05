@@ -1,6 +1,5 @@
 package game;
 
-import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import desktop_fields.Tax;
@@ -12,8 +11,8 @@ import Fields.*;
 public class GameBoard
 {
 
-	private Area[] areas = new Area[22];
-	private Field[] fields = new Field[22];
+	private Field[] areas = new Field[22];
+	private desktop_fields.Field[] fields = new desktop_fields.Field[22];
 
 	/**
 	 * builds the gameboard, the first part builds the GUI board, and the second
@@ -130,14 +129,14 @@ public class GameBoard
 		areas[21] = new Territory(4000, 8000, "Castle", 21);
 	}
 
-	public Area getAreas(int a)
+	public Field getAreas(int a)
 	{
 		a--;
 		a--;
 		return areas[a];
 	}
 
-	public Area[] getAreaList()
+	public Field[] getAreaList()
 	{
 		return areas;
 	}

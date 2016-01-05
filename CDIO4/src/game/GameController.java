@@ -1,6 +1,6 @@
 package game;
 
-import Fields.Area;
+import Fields.Field;
 import desktop_resources.GUI;
 
 public class GameController
@@ -92,7 +92,7 @@ public class GameController
 					length++;
 				}
 				this.players[turn.getCheck() - 1] = this.players[length - 1];
-				for (Area x : board.getAreaList())
+				for (Field x : board.getAreaList())
 				{
 					try
 					{
