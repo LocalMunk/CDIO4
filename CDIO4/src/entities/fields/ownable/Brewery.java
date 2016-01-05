@@ -28,7 +28,7 @@ public class Brewery extends Ownable
 	@Override
 	public int getRent()
 	{
-		return dice.roll() * 100 * owner.getLaborCampsOwned();
+		return dice.roll() * rate * owner.getLaborCampsOwned();
 	}
 
 	@Override

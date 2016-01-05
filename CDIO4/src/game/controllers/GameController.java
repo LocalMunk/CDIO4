@@ -15,6 +15,21 @@ public class GameController
 	private GameBoard board;
 	private String y;
 	private int amountofplayers;
+	
+	private boolean checkName(String name)
+	{
+		
+		if(name.length() >= 12 || name.contains(" "))
+			return false;
+		
+		for(Player player : players)
+		{
+			if(player != null && player.getName().equals(name))
+				return false;
+		}
+		
+		return true;
+	}
 
 	/**
 	 * Builds the necessary objects for the game to begin
@@ -27,8 +42,20 @@ public class GameController
 		this.players = new Player[amountofplayers];
 		for (int i = 0; i < amountofplayers; i++)
 		{
-			y = GUI.getUserString("What is your name?");
-			this.players[i] = new Player(y, 30000, true);
+			boolean doContinue = true;
+			String name;
+			name = GUI.getUserString("What is your name?");
+			
+			do
+			{
+				if(checkName(name))
+					doContinue = false;
+				else
+					name = GUI.getUserString("What is your name?");
+				
+			} while(doContinue);
+			
+			this.players[i] = new Player(name, 30000, true);
 			GUI.addPlayer(this.players[i].getName(), 30000);
 			GUI.setCar(1, this.players[i].getName());
 		}
