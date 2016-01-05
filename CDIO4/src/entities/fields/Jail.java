@@ -1,4 +1,4 @@
-package Fields;
+package entities.fields;
 
 import game.Player;
 

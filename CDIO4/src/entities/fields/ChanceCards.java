@@ -1,8 +1,8 @@
-package Fields;
+package entities.fields;
 
 import game.Player;
 
-public class FreeParking extends Field {
+public class ChanceCards extends Field {
 
 	@Override
 	public void landOnField(Player player) {
@@ -21,5 +21,5 @@ public class FreeParking extends Field {
 		// TODO Auto-generated method stub
 		
 	}
-// Super low priority: Gør så tax penge lander her
+
 }

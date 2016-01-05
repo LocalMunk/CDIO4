@@ -11,12 +11,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-<<<<<<< HEAD
+import entities.fields.Brewery;
 import entities.fields.Refuge;
 import entities.fields.abstracts.Ownable;
 import entities.fields.ownable.LaborCamp;
-=======
-import Fields.Brewery;
 import Fields.Refuge;
 >>>>>>> 55faa3ee7a20ae435203cf56ba78d8770efe71c7
 

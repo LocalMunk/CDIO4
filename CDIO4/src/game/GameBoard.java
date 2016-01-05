@@ -2,6 +2,7 @@ package game;
 
 import desktop_fields.Street;
 import desktop_resources.GUI;
+import entities.fields.Brewery;
 import desktop_fields.Tax;
 import desktop_fields.Refuge;
 import desktop_fields.Start;

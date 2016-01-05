@@ -1,8 +1,8 @@
-package Fields;
+package entities.fields;
 
 import game.Player;
 
-public class ChanceCards extends Field {
+public class GoToJail extends Field {
 
 	@Override
 	public void landOnField(Player player) {

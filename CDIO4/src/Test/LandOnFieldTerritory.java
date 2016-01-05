@@ -6,11 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-<<<<<<< HEAD
+import entities.fields.Brewery;
 import entities.fields.ownable.LaborCamp;
 import entities.fields.ownable.Territory;
-=======
-import Fields.Brewery;
 import Fields.Property;
 >>>>>>> 55faa3ee7a20ae435203cf56ba78d8770efe71c7
 import game.Player;

@@ -1,4 +1,4 @@
-package Fields;
+package entities.fields;
 
 import desktop_resources.GUI;
 import game.Dice;
