@@ -89,11 +89,8 @@ public class GameController
 			if (player.getAccount().getBalance() <= 0)
 			{
 				this.amountofplayers--;
-				int length = 0;
-				for (Player a : this.players)
-				{
-					length++;
-				}
+				int length = this.players.length;
+
 				this.players[turn.getCheck() - 1] = this.players[length - 1];
 				for (Field x : board.getAreaList())
 				{
