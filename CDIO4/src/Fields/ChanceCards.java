@@ -2,7 +2,7 @@ package Fields;
 
 import game.Player;
 
-public class ChanceCards extends Area {
+public class ChanceCards extends Field {
 
 	@Override
 	public void landOnField(Player player) {

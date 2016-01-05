@@ -2,7 +2,7 @@ package Fields;
 
 import game.Player;
 
-public class Jail extends Area {
+public class Jail extends Field {
 
 	@Override
 	public void landOnField(Player player) {

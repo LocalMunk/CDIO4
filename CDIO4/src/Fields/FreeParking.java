@@ -2,7 +2,7 @@ package Fields;
 
 import game.Player;
 
-public class FreeParking extends Area {
+public class FreeParking extends Field {
 
 	@Override
 	public void landOnField(Player player) {
