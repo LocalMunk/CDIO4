@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Fields.LaborCamp;
-import Fields.Territory;
+import entities.fields.ownable.LaborCamp;
+import entities.fields.ownable.Territory;
 import game.Player;
 
 public class LandOnFieldTerritory

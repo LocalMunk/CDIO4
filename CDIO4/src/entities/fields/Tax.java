@@ -1,14 +1,14 @@
-package Fields;
+package entities.fields;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Field;
 import game.Player;
 
 public class Tax extends Field
 {
 
 	private int taxAmount;
-	private int taxRate = -1;
-	private String fieldName;
+	private double taxRate;
 
 	/**
 	 * Creates a tax field, that withdraws money from player
@@ -18,10 +18,11 @@ public class Tax extends Field
 	 * @param b
 	 *            Field name (string)
 	 */
-	public Tax(int a, String b)
+	public Tax(String name, String description, int taxAmount, double taxRate)
 	{
-		taxAmount = a;
-		fieldName = b;
+		super(name, description);
+		this.taxAmount = taxAmount;
+		this.taxRate = taxRate;
 	}
 
 	/**
@@ -32,11 +33,11 @@ public class Tax extends Field
 	@Override
 	public void landOnField(Player player)
 	{
-		if (fieldName.equals("Caravan"))
+		if (this.taxRate > 0)
 		{
 			if (GUI.getUserLeftButtonPressed("Pay 10% of total assets?, or do you want to pay 4000?", "10%", "4000"))
 			{
-				player.getAccount().withdraw(player.getAccount().getBalance() / 10);
+				player.getAccount().withdraw(player.getAccount().getBalance() / taxRate);
 			}
 			else
 			{

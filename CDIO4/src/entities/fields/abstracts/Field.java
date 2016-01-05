@@ -1,11 +1,18 @@
-package Fields;
+package entities.fields.abstracts;
 
 import game.Player;
 
 public abstract class Field
 {
-
-	protected int fieldnumber;
+	protected String name;
+	protected String description;
+	
+	public Field(String name, String description)
+	{
+		this.name = name;
+		this.description = description;
+	}
+	
 
 	/**
 	 * landOnField describes what happens for a player when they land on a

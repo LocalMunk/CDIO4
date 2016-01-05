@@ -1,7 +1,10 @@
-package game;
+package game.controllers;
 
-import Fields.Field;
 import desktop_resources.GUI;
+import entities.fields.abstracts.Field;
+import game.Dice;
+import game.Player;
+import game.Turn;
 
 public class GameController
 {
@@ -77,7 +80,7 @@ public class GameController
 					GUI.setCar(player.getPosition(), player.getName());
 				}
 			}
-			board.getAreas(player.getPosition() + 1).landOnField(player);
+			board.getField(player.getPosition() + 1).landOnField(player);
 			if (player.getAccount().getBalance() == 0)
 			{
 				GUI.showMessage(player.getName() + " is dead");

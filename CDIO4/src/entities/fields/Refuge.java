@@ -1,6 +1,7 @@
-package Fields;
+package entities.fields;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Field;
 import game.Player;
 
 public class Refuge extends Field
@@ -14,9 +15,10 @@ public class Refuge extends Field
 	 * @param a
 	 *            bonus (int)
 	 */
-	public Refuge(int a)
+	public Refuge(String name, String description, int bonus)
 	{
-		bonus = a;
+		super(name, description);
+		this.bonus = bonus;
 	}
 
 	/**

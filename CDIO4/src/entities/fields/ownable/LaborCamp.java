@@ -1,14 +1,14 @@
-package Fields;
+package entities.fields.ownable;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Ownable;
 import game.Dice;
 import game.Player;
 
 public class LaborCamp extends Ownable
 {
-
-	private int price;
-	private Dice dice = new Dice(6);
+	private int rate;
+	private Dice dice;
 
 	/**
 	 * Creates a LaborCamp field
@@ -18,11 +18,11 @@ public class LaborCamp extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public LaborCamp(int a, int b)
+	public LaborCamp(String name, String description, int price, int rate, Dice dice)
 	{
-		price = a;
-		fieldnumber = b;
-		owned = false;
+		super(name, description, price);
+		this.rate = rate;
+		this.dice = dice;
 	}
 
 	@Override

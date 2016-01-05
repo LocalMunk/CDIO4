@@ -1,10 +1,9 @@
 package Test;
 
-import game.GameBoard;
 import game.Dice;
 
 import game.Player;
-import Fields.Ownable;
+import game.controllers.GameBoard;
 
 import static org.junit.Assert.*;
 
@@ -12,8 +11,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Fields.LaborCamp;
-import Fields.Refuge;
+import entities.fields.Refuge;
+import entities.fields.abstracts.Ownable;
+import entities.fields.ownable.LaborCamp;
 
 public class LandOnFieldLaborCamp
 {

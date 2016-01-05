@@ -4,8 +4,8 @@ import game.Player;
 
 import org.junit.*;
 
-import Fields.Refuge;
 import desktop_fields.Field;
+import entities.fields.Refuge;
 
 public class LandOnFieldRefuge
 {

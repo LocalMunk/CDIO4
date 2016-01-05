@@ -1,6 +1,7 @@
-package Fields;
+package entities.fields.ownable;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Ownable;
 import game.Player;
 
 public class Fleet extends Ownable
@@ -8,12 +9,12 @@ public class Fleet extends Ownable
 	/**
 	 * Sets up diffrent rents
 	 */
-	private final int RENT_1 = 500;
-	private final int RENT_2 = 1000;
-	private final int RENT_3 = 2000;
-	private final int RENT_4 = 4000;
-	private String name;
-	private final int price = 4000;
+//	private final int RENT_1 = 500;
+//	private final int RENT_2 = 1000;
+//	private final int RENT_3 = 2000;
+//	private final int RENT_4 = 4000;
+//	private final int price = 4000;
+	private int[] rent;
 
 	/**
 	 * Creates a fleet field. Buying price is predefined at 4.000
@@ -23,10 +24,10 @@ public class Fleet extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public Fleet(String a, int b)
+	public Fleet(String name, String description, int price, int[] rent)
 	{
-		name = a;
-		fieldnumber = b;
+		super(name, description, price);
+		this.rent = rent;
 	}
 
 	@Override

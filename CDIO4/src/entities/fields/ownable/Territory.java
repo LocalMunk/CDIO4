@@ -1,35 +1,30 @@
-package Fields;
+package entities.fields.ownable;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Ownable;
 import game.Player;
 
 public class Territory extends Ownable
 {
 
 	private int rent, price;
-	private Player owner;
-	private boolean owned, buybutton;
-	private String name;
 
 	/**
 	 * Creates a territory field
 	 * 
-	 * @param a
-	 *            Rent (int)
-	 * @param b
-	 *            Field price (int)
-	 * @param c
+	 * @param name
 	 *            Field name (string)
-	 * @param d
-	 *            Field number (int)
+	 * @param description
+	 *            Field description (string)
+	 * @param price
+	 *            Field Ownable price (int)
+	 * @param rent
+	 *            rent (int)
 	 */
-	public Territory(int a, int b, String c, int d)
+	public Territory(String name, String description, int price, int rent)
 	{
-		rent = a;
-		price = b;
-		owned = false;
-		name = c;
-		fieldnumber = d;
+		super(name, description, price);
+		this.rent = rent;
 	}
 
 	@Override
@@ -41,7 +36,6 @@ public class Territory extends Ownable
 	@Override
 	public void landOnField(Player player)
 	{
-
 		if (player == owner)
 		{
 

@@ -10,7 +10,7 @@ import game.Player;
 
 import org.junit.Test;
 
-import Fields.Tax;
+import entities.fields.Tax;
 
 public class LandOnFieldTax
 {

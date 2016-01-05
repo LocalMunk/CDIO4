@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Fields.Fleet;
-import Fields.LaborCamp;
+import entities.fields.ownable.Fleet;
+import entities.fields.ownable.LaborCamp;
 import game.Player;
 
 public class LandOnFieldFleet
