@@ -1,4 +1,4 @@
-package entities.fields;
+package entities.fields.ownable;
 
 import desktop_resources.GUI;
 import entities.fields.abstracts.Ownable;
@@ -7,14 +7,8 @@ import game.Player;
 
 public class Brewery extends Ownable
 {
-
-	public Brewery(String name, String description, int fieldID, int price) {
-		super(name, description, fieldID, price);
-		// TODO Auto-generated constructor stub
-	}
-
-	private int price;
-	private Dice dice = new Dice(6);
+	private int rate;
+	private Dice dice;
 
 	/**
 	 * Creates a LaborCamp field
@@ -24,12 +18,17 @@ public class Brewery extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
+	public Brewery(String name, String description, int fieldID, int price, int rate, Dice dice)
+	{
+		super(name, description, price, fieldID);
+		this.rate = rate;
+		this.dice = dice;
+	}
 
 	@Override
 	public int getRent()
 	{
-
-		return 0;
+		return dice.roll() * 100 * owner.getLaborCampsOwned();
 	}
 
 	@Override
@@ -74,8 +73,8 @@ public class Brewery extends Ownable
 		 */
 		else if (owned && owner != player)
 		{
-			int getmoney = dice.roll();
-			owner.getAccount().deposit(player.getAccount().withdraw(getmoney * 100 * owner.getLaborCampsOwned()));
+			int getmoney = this.getRent();
+			owner.getAccount().deposit(player.getAccount().withdraw(getmoney));
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
 		}

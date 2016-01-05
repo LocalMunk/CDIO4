@@ -34,7 +34,10 @@ public class Fleet extends Ownable
 	public int getRent()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		int checker = owner.getFieldsOwned();
+		int payout = this.rent[checker-1];
+		
+		return payout;
 
 	}
 
@@ -76,25 +79,7 @@ public class Fleet extends Ownable
 		 */
 		else if (owned && owner != player)
 		{
-			int checker = owner.getFieldsOwned();
-			int payout = 0;
-			switch (checker)
-			{
-			case 1:
-				payout = 500;
-				break;
-			case 2:
-				payout = 1000;
-				break;
-			case 3:
-				payout = 2000;
-				break;
-			case 4:
-				payout = 4000;
-				break;
-			default:
-				System.out.println("Something went terribly wrong, fejlkode 1000");
-			}
+			int payout = this.getRent();
 			owner.getAccount().deposit(player.getAccount().withdraw(payout));
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
