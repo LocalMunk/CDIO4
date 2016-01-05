@@ -3,7 +3,7 @@ package Fields;
 import desktop_resources.GUI;
 import game.Player;
 
-public class Refuge extends Area
+public class Refuge extends Field
 {
 
 	private int bonus;

@@ -3,7 +3,7 @@ package Fields;
 import desktop_resources.GUI;
 import game.Player;
 
-public class Tax extends Area
+public class Tax extends Field
 {
 
 	private int taxAmount;

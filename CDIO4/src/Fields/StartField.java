@@ -2,7 +2,7 @@ package Fields;
 
 import game.Player;
 
-public class StartField extends Area
+public class StartField extends Field
 {
 
 	@Override
