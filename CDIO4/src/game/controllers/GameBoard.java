@@ -7,7 +7,6 @@ import desktop_fields.Tax;
 import desktop_fields.Refuge;
 import desktop_fields.Start;
 import desktop_fields.Shipping;
-import Fields.*;
 
 public class GameBoard
 {
@@ -134,11 +133,11 @@ public class GameBoard
 	{
 		a--;
 		a--;
-		return areas[a];
+		return fields[a];
 	}
 
 	public Field[] getAreaList()
 	{
-		return areas;
+		return fields;
 	}
 }
