@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Fields.Fleet;
-import Fields.LaborCamp;
+import Fields.Brewery;
 import game.Player;
 
 public class LandOnFieldFleet

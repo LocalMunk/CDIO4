@@ -4,7 +4,7 @@ import desktop_resources.GUI;
 import game.Dice;
 import game.Player;
 
-public class LaborCamp extends Ownable
+public class Brewery extends Ownable
 {
 
 	private int price;
@@ -18,7 +18,7 @@ public class LaborCamp extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public LaborCamp(int a, int b)
+	public Brewery(int a, int b)
 	{
 		price = a;
 		fieldnumber = b;

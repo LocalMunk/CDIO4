@@ -12,7 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Fields.LaborCamp;
+import Fields.Brewery;
 import Fields.Refuge;
 
 public class LandOnFieldLaborCamp
@@ -21,7 +21,7 @@ public class LandOnFieldLaborCamp
 	private Player player2;
 	private Player player3;
 
-	private LaborCamp Laborcamp;
+	private Brewery Laborcamp;
 
 	@Before
 
@@ -31,7 +31,7 @@ public class LandOnFieldLaborCamp
 		this.player = new Player("Henrik", 5000, true);
 		this.player2 = new Player("Bob", 5000, true);
 		this.player3 = new Player("Bo,", 200, true);
-		this.Laborcamp = new LaborCamp(2500, 2);
+		this.Laborcamp = new Brewery(2500, 2);
 
 	}
 
@@ -48,7 +48,7 @@ public class LandOnFieldLaborCamp
 		Assert.assertNotNull(this.player2);
 		Assert.assertNotNull(this.player3);
 		Assert.assertNotNull(this.Laborcamp);
-		Assert.assertTrue(this.Laborcamp instanceof LaborCamp);
+		Assert.assertTrue(this.Laborcamp instanceof Brewery);
 	}
 
 	@Test

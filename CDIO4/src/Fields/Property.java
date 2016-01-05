@@ -3,7 +3,7 @@ package Fields;
 import desktop_resources.GUI;
 import game.Player;
 
-public class Territory extends Ownable
+public class Property extends Ownable
 {
 
 	private int rent, price;
@@ -23,7 +23,7 @@ public class Territory extends Ownable
 	 * @param d
 	 *            Field number (int)
 	 */
-	public Territory(int a, int b, String c, int d)
+	public Property(int a, int b, String c, int d)
 	{
 		rent = a;
 		price = b;
