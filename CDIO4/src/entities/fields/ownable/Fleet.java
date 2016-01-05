@@ -24,9 +24,9 @@ public class Fleet extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public Fleet(String name, String description, int price, int[] rent)
+	public Fleet(String name, String description, int fieldID, int price, int[] rent)
 	{
-		super(name, description, price);
+		super(name, description, price, fieldID);
 		this.rent = rent;
 	}
 

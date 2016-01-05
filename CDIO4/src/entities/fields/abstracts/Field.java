@@ -6,11 +6,13 @@ public abstract class Field
 {
 	protected String name;
 	protected String description;
+	protected int fieldID;
 	
-	public Field(String name, String description)
+	public Field(String name, String description, int fieldID)
 	{
 		this.name = name;
 		this.description = description;
+		this.fieldID = fieldID;
 	}
 	
 

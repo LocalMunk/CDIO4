@@ -18,9 +18,9 @@ public class LaborCamp extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public LaborCamp(String name, String description, int price, int rate, Dice dice)
+	public LaborCamp(String name, String description, int fieldID, int price, int rate, Dice dice)
 	{
-		super(name, description, price);
+		super(name, description, price, fieldID);
 		this.rate = rate;
 		this.dice = dice;
 	}

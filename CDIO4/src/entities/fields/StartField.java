@@ -6,9 +6,9 @@ import game.Player;
 public class StartField extends Field
 {
 
-	public StartField(String name, String description)
+	public StartField(String name, int fieldID, String description)
 	{
-		super(name, description);
+		super(name, description, fieldID);
 	}
 	@Override
 	public void landOnField(Player player)

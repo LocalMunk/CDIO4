@@ -8,7 +8,7 @@ public class Tax extends Field
 {
 
 	private int taxAmount;
-	private double taxRate;
+	private int taxRate;
 
 	/**
 	 * Creates a tax field, that withdraws money from player
@@ -18,9 +18,9 @@ public class Tax extends Field
 	 * @param b
 	 *            Field name (string)
 	 */
-	public Tax(String name, String description, int taxAmount, double taxRate)
+	public Tax(String name, String description, int fieldID, int taxAmount, int taxRate)
 	{
-		super(name, description);
+		super(name, description, fieldID);
 		this.taxAmount = taxAmount;
 		this.taxRate = taxRate;
 	}

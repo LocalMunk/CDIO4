@@ -8,9 +8,9 @@ public abstract class Ownable extends Field
 	protected Player owner;
 	protected boolean owned;
 	
-	public Ownable(String name, String description, int price)
+	public Ownable(String name, String description, int fieldID, int price)
 	{
-		super(name, description);
+		super(name, description, fieldID);
 		this.price = price;
 		this.owned = false;
 	}

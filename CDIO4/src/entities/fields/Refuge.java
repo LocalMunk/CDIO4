@@ -15,9 +15,9 @@ public class Refuge extends Field
 	 * @param a
 	 *            bonus (int)
 	 */
-	public Refuge(String name, String description, int bonus)
+	public Refuge(String name, String description, int fieldID, int bonus)
 	{
-		super(name, description);
+		super(name, description, fieldID);
 		this.bonus = bonus;
 	}
 
