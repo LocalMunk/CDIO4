@@ -38,6 +38,8 @@ public class GameController
 	public GameController()
 	{
 		fieldCollection = new FieldCollection();
+		fieldCollection.initialize();
+		
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
 		this.players = new Player[amountofplayers];
@@ -108,27 +110,31 @@ public class GameController
 					GUI.setCar(player.getPosition(), player.getName());
 				}
 			}
+			int position = player.getPosition();
+			Field[] fields = fieldCollection.getFieldList();
+			Field field = fieldCollection.getField(player.getPosition() + 1);
 			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
 			
-			if(player.getFieldsOwned() != 0)
-			{
-				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
-				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
-				{
-					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
-					
-					//Get the field that the player selects
-					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
-					
-					
-					
-					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
-					
-					
-					
-					
-				}
-			}
+//			if(player.getFieldsOwned() != 0)
+//			{
+//				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
+//				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
+//				{
+//					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
+//					
+//					//Get the field that the player selects
+//					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+//					
+//					
+//					
+//					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
+//					
+//					
+//					
+//					
+//					
+//				}
+//			}
 			
 			
 			if (player.getAccount().getBalance() == 0)

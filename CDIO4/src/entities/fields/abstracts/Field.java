@@ -33,4 +33,9 @@ public abstract class Field
 	{
 		return this.name;
 	}
+	
+	public String getDescription()
+	{
+		return this.description;
+	}
 }

@@ -6,7 +6,7 @@ import game.Player;
 
 public class Territory extends Ownable
 {
-	private int rent, price;
+	private int rent;
 	
 	private int houses;
 	private int hotels;
@@ -31,7 +31,7 @@ public class Territory extends Ownable
 	 */
 	public Territory(String name, String description, int fieldID, int price, int rent)
 	{
-		super(name, description, price, fieldID);
+		super(name, description, fieldID, price);
 		this.rent = rent;
 		this.houses = 0;
 		this.hotels = 0;
