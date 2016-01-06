@@ -1,5 +1,7 @@
 package game.controllers;
 
+import java.util.Random;
+
 import desktop_resources.GUI;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
@@ -146,5 +148,15 @@ public class GameController
 			turn.change();
 
 		}
+	}
+	public String draw (Player player){
+		int rnd = new Random().nextInt(board.getCardList().length);
+		if (rnd <= 4){
+			player.getAccount().deposit(board.getCardList()[rnd].getValue());
+		}
+		else {
+			player.getAccount().withdraw(board.getCardList()[rnd].getValue());
+		}
+		return board.getCardList()[rnd].getDescription();
 	}
 }
