@@ -1,6 +1,7 @@
 package game.controllers;
 
 import desktop_resources.GUI;
+import entities.fields.StartField;
 import entities.fields.abstracts.Field;
 import game.Dice;
 import game.Player;
@@ -84,7 +85,7 @@ public class GameController
 	 * asks the player to press the button , then rolls the dice and moves the
 	 * player calls the method land on field if the player reaches 0 money, it
 	 * will terminate the player from the game, by excluding him from the
-	 * playerarray and removing ownership from his owned fields
+	 * player array and removing ownership from his owned fields
 	 */
 	public void game(Player player)
 	{
@@ -105,6 +106,7 @@ public class GameController
 					GUI.removeAllCars(player.getName());
 					player.setPosition(-21);
 					GUI.setCar(player.getPosition(), player.getName());
+					StartField.getStartMoney(player.getName());
 				}
 			}
 			board.getField(player.getPosition() + 1).landOnField(player);

@@ -2,7 +2,7 @@ package game.controllers;
 
 import desktop_fields.Street;
 import desktop_resources.GUI;
-import entities.fields.ChanceCards;
+import entities.fields.ChanceField;
 import entities.fields.FreeParking;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
@@ -32,12 +32,12 @@ public class GameBoard
 
 		fields[0] = new StartField("Start",1,"Start felt");
 		fields[1] = new Territory("R�dovrevej","Street",2,60,10);
-		fields[2] = new ChanceCards("Try your luck","IS your luck shit?",3);
+		fields[2] = new ChanceField("Try your luck","IS your luck shit?",3);
 		fields[3] = new Territory ("Hvidovrevej","Street",4,60 ,10);
 		fields[4] = new Tax("Pay Tax","You need to pay taxes",5,200,0,1);
 		fields[5] = new Fleet ("�resundsredderiet","Fleet",6,200, null);
 		fields[6] = new Territory ("Roskildevej","Street",7, 100 ,10);
-		fields[7] = new ChanceCards("Try your luck","Is your luck shit?",8);
+		fields[7] = new ChanceField("Try your luck","Is your luck shit?",8);
 		fields[8] = new Territory ("Valby langgade","Street",9,100 ,10);
 		fields[9] = new Territory ("Alle gad�","Street",10,60 ,10);
 		fields[11] = new Jail ("Jail","Your jailed bitch",11);
@@ -48,12 +48,12 @@ public class GameBoard
 		fields[16] = new Territory ("Hvidovrevej","Street",16,140 	 ,10);
 		fields[17] = new Fleet("DFDS","Fleet",17,200 , null);
 		fields[18] = new Territory ("Bernsstoffvej","Street",18,180 ,10);
-		fields[19] = new ChanceCards("Try your luck","ChanceCard",19);
+		fields[19] = new ChanceField("Try your luck","ChanceCard",19);
 		fields[20] = new Territory ("Hellerupvej","Street",20,180 ,10);
 		fields[21] = new Territory ("Strandvejen","Street",21,180 ,10);
 		fields[22] = new FreeParking ("Helle","Park free here",22);
 		fields[23] = new Territory ("Trianglen","Street",23,220 ,10);
-		fields[24] = new ChanceCards ("Try your luck","Street", 24);
+		fields[24] = new ChanceField ("Try your luck","Street", 24);
 		fields[25] = new Territory("�sterbrogade", "Street", 25, 220, 10);
 		fields[26] = new Territory("Gr�nningen", "Street", 26, 240, 10);
 		fields[27] = new Fleet("�.S. redderiet", "Fleet", 27, 200);
@@ -64,10 +64,10 @@ public class GameBoard
 		fields[32] = new GoToJail("Go to jail", "go to jail", 32);
 		fields[33] = new Territory("Amagertorv", "Street", 33, 300, 10);
 		fields[33] = new Territory("Vimmelskaftet", "Street", 34, 300, 10);
-		fields[34] = new ChanceCards("Try your luck", "is your luck shit?", 35);
+		fields[34] = new ChanceField("Try your luck", "is your luck shit?", 35);
 		fields[35] = new Territory("Nygade", "Street", 36, 320,10);
 		fields[36] = new Fleet("Bornholm", "Fleet", 37, 200);
-		fields[37] = new ChanceCards("Try your luck", "is your luck shit?", 38);
+		fields[37] = new ChanceField("Try your luck", "is your luck shit?", 38);
 		fields[38] = new Territory("Frederiksberggade", "Street", 39, 350, 10);
 		fields[39] = new Tax("Skat", "Pay your damned taxes", 40);
 		fields[40] = new Territory("R�dhuspladsen", "Street", 41, 400, 10);	}
