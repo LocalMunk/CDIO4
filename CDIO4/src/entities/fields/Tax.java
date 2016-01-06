@@ -70,6 +70,23 @@ public class Tax extends Field
 	{
 		this.taxAmount = taxAmount;
 	}
+	
+	/**
+	 * Returns the taxrate of a given field
+	 * 
+	 */
+	public int getTaxRate()
+	{
+		return taxRate;
+	}
+
+	/**
+	 * Sets the taxrate for a given field
+	 */
+	public void setTaxRate(int taxRate)
+	{
+		this.taxRate = taxRate;
+	}
 
 	@Override
 	public Player getOwner()

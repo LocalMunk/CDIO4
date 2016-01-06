@@ -9,11 +9,6 @@ public class Fleet extends Ownable
 	/**
 	 * Sets up different rents
 	 */
-//	private final int RENT_1 = 500;
-//	private final int RENT_2 = 1000;
-//	private final int RENT_3 = 2000;
-//	private final int RENT_4 = 4000;
-//	private final int price = 4000;
 	private int[] rent;
 
 	/**
