@@ -28,4 +28,9 @@ public abstract class Field
 	public abstract Player getOwner();
 
 	public abstract void setOwned(boolean bool);
+	
+	public String getName()
+	{
+		return this.name;
+	}
 }

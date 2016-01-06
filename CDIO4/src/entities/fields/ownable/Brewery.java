@@ -102,7 +102,7 @@ public class Brewery extends Ownable
 	@Override
 	public void setOwner(Player player)
 	{
-		player = owner;
+		this.owner = player;
 
 	}
 

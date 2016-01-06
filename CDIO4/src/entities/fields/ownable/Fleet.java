@@ -99,7 +99,7 @@ public class Fleet extends Ownable
 	public void setOwner(Player player)
 	{
 		// TODO Auto-generated method stub
-		owner = player;
+		this.owner = player;
 
 	}
 
