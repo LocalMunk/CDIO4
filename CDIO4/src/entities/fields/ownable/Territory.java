@@ -3,6 +3,7 @@ package entities.fields.ownable;
 import java.util.Properties;
 
 import desktop_resources.GUI;
+import entities.fields.abstracts.Field;
 import entities.fields.abstracts.Ownable;
 import game.Player;
 
@@ -41,6 +42,7 @@ public class Territory extends Ownable
 		this.rent = rent;
 		this.houses = 0;
 		this.hotels = 0;
+		this.groupName = groupName;
 	}
 
 	@Override
@@ -168,6 +170,40 @@ public class Territory extends Ownable
 		}
 		
 		return concatString(possibleHouses, possibleHotels);
+	}
+	
+	public int getNumberOfFieldsInGroup(Territory territory, Field[] allFields)
+	{
+		int i = 0;
+		for(Field field : allFields)
+		{
+			if(field instanceof Territory && ((Territory) field).getGroupName().equals(territory.getGroupName()))
+				i++;
+		}
+		
+		return i;
+	}
+	
+	public boolean isTerritoryBuildable(Territory territory, Field[] playerFields, Field[] allFields)
+	{
+		int i = 0;
+		for(Field field : playerFields)
+		{
+			if(		field instanceof Territory
+					&& ((Territory) field).getGroupName().equals(territory.getGroupName())
+			)
+				i++;
+		}
+		
+		if(i == getNumberOfFieldsInGroup(territory, allFields))
+			return true;
+		else
+			return false;
+	}
+	
+	public String getGroupName()
+	{
+		return this.groupName;
 	}
 
 	/**

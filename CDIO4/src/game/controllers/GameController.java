@@ -120,13 +120,12 @@ public class GameController
 
 			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
 			
-			int hej = player.getFieldsOwned();
 			
 			if(player.getFieldsOwned() != 0)
 			{
 				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
-				Field[] ownedFieldBuildable = null;
-				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
+				Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+				if(ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
 				{
 					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
 					
