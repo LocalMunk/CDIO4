@@ -1,6 +1,7 @@
 package entities.fields.collection;
 
-import entities.fields.ChanceCards;
+import entities.ChanceCards.*;
+import entities.fields.ChanceField;
 import entities.fields.FreeParking;
 import entities.fields.GoToJail;
 import entities.fields.Jail;
@@ -33,12 +34,12 @@ public class FieldCollection
 		fields[0] = new StartField("Start",1,"Start felt");
 		
 		//Change cards
-		fields[2] = new ChanceCards("Try your luck","IS your luck shit?",3);
-		fields[7] = new ChanceCards("Try your luck","Is your luck shit?",8);
-		fields[19] = new ChanceCards("Try your luck","ChanceCard",19);
-		fields[18] = new ChanceCards ("Try your luck","Street", 24);
-		fields[34] = new ChanceCards("Try your luck", "is your luck shit?", 35);
-		fields[37] = new ChanceCards("Try your luck", "is your luck shit?", 38);
+		fields[2] = new ChanceField("Try your luck","IS your luck shit?",3);
+		fields[7] = new ChanceField("Try your luck","Is your luck shit?",8);
+		fields[19] = new ChanceField("Try your luck","ChanceCard",19);
+		fields[18] = new ChanceField("Try your luck","Street", 24);
+		fields[34] = new ChanceField("Try your luck", "is your luck shit?", 35);
+		fields[37] = new ChanceField("Try your luck", "is your luck shit?", 38);
 		
 		//Territory
 		fields[1] = new Territory("R�dovrevej","Street",2,60,10);

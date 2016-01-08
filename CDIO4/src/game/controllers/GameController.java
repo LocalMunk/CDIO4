@@ -3,10 +3,10 @@ package game.controllers;
 import java.util.Random;
 
 import desktop_resources.GUI;
+import entities.ChanceCards.ChanceCardCollection;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
 import entities.fields.collection.FieldCollection;
-import entities.fields.ownable.Territory;
 import game.Dice;
 import game.Player;
 import game.Turn;
@@ -18,6 +18,7 @@ public class GameController
 	private Dice dice;
 	private Turn turn;
 	private FieldCollection fieldCollection;
+	private ChanceCardCollection chanceCardCollection;
 	private String y;
 	private int amountofplayers;
 	
@@ -42,6 +43,7 @@ public class GameController
 	{
 		fieldCollection = new FieldCollection();
 		fieldCollection.initialize();
+		chanceCardCollection = new ChanceCardCollection();
 		
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
@@ -114,9 +116,7 @@ public class GameController
 					StartField.getStartMoney(player.getName());
 				}
 			}
-			int position = player.getPosition();
-			Field[] fields = fieldCollection.getFieldList();
-			Field field = fieldCollection.getField(player.getPosition() + 1);
+
 			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
 			
 //			if(player.getFieldsOwned() != 0)
@@ -179,13 +179,13 @@ public class GameController
 		}
 	}
 	public String draw (Player player){
-		int rnd = new Random().nextInt(board.getCardList().length);
+		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
 		if (rnd <= 4){
-			player.getAccount().deposit(board.getCardList()[rnd].getValue());
+			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
 		}
 		else {
-			player.getAccount().withdraw(board.getCardList()[rnd].getValue());
+			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
 		}
-		return board.getCardList()[rnd].getDescription();
+		return chanceCardCollection.getCardList()[rnd].getDescription();
 	}
 }
