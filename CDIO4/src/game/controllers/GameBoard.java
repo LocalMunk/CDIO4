@@ -114,6 +114,5 @@ public class GameBoard
 	public Field[] getAreaList()
 	{
 		return fields;
-
 	}
 }

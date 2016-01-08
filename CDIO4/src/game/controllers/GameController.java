@@ -7,6 +7,7 @@ import entities.ChanceCards.ChanceCardCollection;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
 import entities.fields.collection.FieldCollection;
+import entities.fields.ownable.Territory;
 import game.Dice;
 import game.Player;
 import game.Turn;
@@ -102,7 +103,7 @@ public class GameController
 			dice.roll();
 			for (int i = 0; i < dice.getValue(); i++)
 			{
-				if (player.getPosition() < 22)
+				if (player.getPosition() < 41)
 				{
 					GUI.removeAllCars(player.getName());
 					player.setPosition(1);
@@ -111,7 +112,7 @@ public class GameController
 				else
 				{
 					GUI.removeAllCars(player.getName());
-					player.setPosition(-21);
+					player.setPosition(-40);
 					GUI.setCar(player.getPosition(), player.getName());
 					StartField.getStartMoney(player);
 				}
@@ -119,26 +120,27 @@ public class GameController
 
 			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
 			
-//			if(player.getFieldsOwned() != 0)
-//			{
-//				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
-//				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
-//				{
-//					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
-//					
-//					//Get the field that the player selects
-//					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
-//					
-//					
-//					
-//					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
-//					
-//					
-//					
-//					
-//					
-//				}
-//			}
+			int hej = player.getFieldsOwned();
+			
+			if(player.getFieldsOwned() != 0)
+			{
+				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
+				Field[] ownedFieldBuildable = null;
+				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
+				{
+					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
+					
+					//Get the field that the player selects
+					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+					
+					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
+					
+					
+					
+					
+					
+				}
+			}
 			
 			
 			if (player.getAccount().getBalance() == 0)

@@ -33,7 +33,7 @@ public class FieldCollection
 		//Start fields
 		fields[0] = new StartField("Start",1,"Start felt");
 		
-		//Change cards
+		//Chance cards
 		fields[2] = new ChanceField("Try your luck","IS your luck shit?",3);
 		fields[7] = new ChanceField("Try your luck","Is your luck shit?",8);
 		fields[19] = new ChanceField("Try your luck","ChanceCard",19);

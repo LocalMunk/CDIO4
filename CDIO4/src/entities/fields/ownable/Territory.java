@@ -69,6 +69,7 @@ public class Territory extends Ownable
 				GUI.showMessage("You are the proud owner of this.");
 				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
+				player.addFieldsOwned();
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			}
 		}
@@ -145,7 +146,7 @@ public class Territory extends Ownable
 		int w = 0;
 		for(int i = numberOfHousesLeft; i >= 1; i--)
 		{
-			possibleHouses[w] = "Houses: " + (this.MAX_HOUSES - i);
+			possibleHouses[w] = "Houses: " + (this.MAX_HOUSES - i +1);
 			w++;
 		}
 		
@@ -156,12 +157,11 @@ public class Territory extends Ownable
 		w = 0;
 		for(int i = numberOfHotelsLeft; i >= 1; i--)
 		{
-			possibleHotels[w] = "Hotel: " + (this.MAX_HOTELS - i);
+			possibleHotels[w] = "Hotel: " + (this.MAX_HOTELS - i + 1);
 			w++;
 		}
 		
-		
-		return new String[numberOfHousesLeft + numberOfHotelsLeft];
+		return concatString(possibleHouses, possibleHotels);
 	}
 
 	/**
@@ -172,5 +172,15 @@ public class Territory extends Ownable
 	{
 		// TODO Auto-generated method stub
 		owned = bool;
+	}
+	
+	public String[] concatString(String[] a, String[] b)
+	{
+		int aLen = a.length;
+		int bLen = b.length;
+		String[] c= new String[aLen+bLen];
+		System.arraycopy(a, 0, c, 0, aLen);
+		System.arraycopy(b, 0, c, aLen, bLen);
+		return c;
 	}
 }
