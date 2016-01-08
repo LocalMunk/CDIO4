@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import desktop_resources.GUI;
 import entities.fields.ChanceField;
 import game.Player;
 
@@ -29,7 +30,10 @@ public class LandOnFieldChance {
 	@Test
 	public void test() {
 		chance1.landOnField(p1);
+		System.out.println(p1.getAccount().getBalance());
 		chance1.landOnField(p2);
+		System.out.println(p2.getAccount().getBalance());
+		GUI.getUserButtonPressed("Exit", "Exit");
 	}
 
 }

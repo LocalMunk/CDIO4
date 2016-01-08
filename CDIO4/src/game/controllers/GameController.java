@@ -19,7 +19,7 @@ public class GameController
 	private Dice dice;
 	private Turn turn;
 	private FieldCollection fieldCollection;
-	private ChanceCardCollection chanceCardCollection;
+//	private ChanceCardCollection chanceCardCollection;
 	private String y;
 	private int amountofplayers;
 	
@@ -44,7 +44,7 @@ public class GameController
 	{
 		fieldCollection = new FieldCollection();
 		fieldCollection.initialize();
-		chanceCardCollection = new ChanceCardCollection();
+//		chanceCardCollection = new ChanceCardCollection();
 		
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
@@ -179,14 +179,15 @@ public class GameController
 
 		}
 	}
-	public String draw (Player player){
-		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
-		if (rnd <= 4){
-			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
-		}
-		else {
-			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
-		}
-		return chanceCardCollection.getCardList()[rnd].getDescription();
-	}
+//	public String draw (Player player){
+//		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
+//		if (rnd <= 4){
+//			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
+//		}
+//		else {
+//			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
+//		}
+//		GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
+//		return chanceCardCollection.getCardList()[rnd].getDescription();
+//	}
 }
