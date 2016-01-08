@@ -1,5 +1,6 @@
 package game.controllers;
 
+<<<<<<< HEAD
 import java.util.Random;
 
 import desktop_fields.Street;
@@ -11,29 +12,124 @@ import entities.fields.abstracts.Field;
 import entities.fields.ownable.Fleet;
 import entities.fields.ownable.Territory;
 import game.ChanceCards;
+=======
+import desktop_fields.Start;
+import desktop_fields.Street;
+import desktop_resources.GUI;
+>>>>>>> origin/FieldCollections
 import game.Dice;
-//import desktop_fields.Tax;
-//import desktop_fields.Brewery;
-//import desktop_fields.Jail;
-//import desktop_fields.Refuge;
-//import desktop_fields.Start;
-//import desktop_fields.Shipping;
+import game.Player;
+import desktop_fields.Tax;
+
+import java.awt.Color;
+
+import desktop_fields.Brewery;
+import desktop_fields.Field;
+import desktop_fields.Jail;
+import desktop_fields.Refuge;
+import desktop_fields.Start;
+import desktop_fields.Shipping;
 
 public class GameBoard
 {
 
+<<<<<<< HEAD
 	private Field[] fields = new Field[22];
 	private ChanceCards[] chance = new ChanceCards[10];
+=======
+	private static Field[] fields = new Field[41];
+>>>>>>> origin/FieldCollections
 //	private desktop_fields.Field[] fields = new desktop_fields.Field[22];
 
 	/**
 	 * builds the gameboard, the first part builds the GUI board, and the second
 	 * builds the code board.
 	 */
-	public GameBoard()
+	public static void initializeGUI(entities.fields.abstracts.Field[] fields)
 	{
-		Dice diceone = new Dice(6);
+		Field[] fieldsGUI = new Field[fields.length];
+		int i = 0;
+		for(entities.fields.abstracts.Field item : fields)
+		{
+			Color  background = Color.lightGray;
+		    String subtext    = "Territory";
+		    
+		    if(item instanceof entities.fields.Refuge)
+		    {
+		        background = Color.green;
+		        subtext    = "Refuge";
+		    }
+		    
+		    else if(item instanceof entities.fields.Tax)
+	        {
+	            background = Color.magenta;
+	            subtext    = "Tax";
+	        }
+		    
+		    else if(item instanceof entities.fields.GoToJail)
+	        {
+	            background = Color.lightGray;
+	            subtext    = "Go to jail";
+	        }
+		    
+		    else if(item instanceof entities.fields.Jail)
+	        {
+	            background = Color.gray;
+	            subtext    = "Jail";
+	        }
+		    
+		    else if(item instanceof entities.fields.ChanceCards)
+	        {
+	            background = Color.yellow;
+	            subtext    = "Chance card";
+	        }
+		    else if(item instanceof entities.fields.FreeParking)
+	        {
+	            background = Color.lightGray;
+	            subtext    = "Free parking";
+	        }
+		    else if(item instanceof entities.fields.StartField)
+	        {
+	            background = Color.red;
+	            subtext    = "Start";
+	        }
+		    
+		    
+		    //Ownable fields
+		    else if(item instanceof entities.fields.ownable.Fleet)
+		    {
+		        background = Color.cyan;
+		        subtext    = "Fleet";
+		    }
+		    
+		    else if(item instanceof entities.fields.ownable.Brewery)
+		    {
+		        background = Color.orange;
+		        subtext    = "Brewery";
+		    }
+		    
+		    else if(item instanceof entities.fields.ownable.Territory)
+		    {
+		        background = Color.blue;
+		        subtext    = "Territory";
+		    }
+		    
+		    /*
+		     * The index is reduced by one to fit into
+		     * the array.
+		     */
+		    fieldsGUI[i] = new Street.Builder()
+	            .setTitle(item.getName())
+	            .setSubText(subtext)
+	            .setDescription(item.getDescription())
+	            .setBgColor(background)
+	            .build();
+			
+		    i++;
+		}
+			GUI.create(fieldsGUI);
 
+<<<<<<< HEAD
 		fields[0] = new StartField("Start",1,"Start felt");
 		fields[1] = new Territory("R�dovrevej","Street",2,60,10);
 		fields[2] = new ChanceField("Try your luck","IS your luck shit?",3);
@@ -100,6 +196,8 @@ public class GameBoard
 	public Field[] getAreaList()
 	{
 		return fields;
+=======
+>>>>>>> origin/FieldCollections
 	}
 	public ChanceCards[] getCardList()
 	{

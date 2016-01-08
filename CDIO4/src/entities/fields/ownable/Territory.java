@@ -6,7 +6,16 @@ import game.Player;
 
 public class Territory extends Ownable
 {
-	private int rent, price;
+	private int rent;
+	
+	private int houses;
+	private int hotels;
+	
+	private final int MAX_HOUSES = 4;
+	private final int MAX_HOTELS = 1;
+	
+	private final int HOUSE_PRICE = 500;
+	private final int HOTEL_PRICE = 2000;
 
 	/**
 	 * Creates a territory field
@@ -22,8 +31,10 @@ public class Territory extends Ownable
 	 */
 	public Territory(String name, String description, int fieldID, int price, int rent)
 	{
-		super(name, description, price, fieldID);
+		super(name, description, fieldID, price);
 		this.rent = rent;
+		this.houses = 0;
+		this.hotels = 0;
 	}
 
 	@Override
@@ -107,6 +118,50 @@ public class Territory extends Ownable
 	{
 		// TODO Auto-generated method stub
 		owner = player;
+	}
+	
+	public int getNumberOfHouses()
+	{
+		return this.houses;
+	}
+	
+	public int getNumberOfHotels()
+	{
+		return this.hotels;
+	}
+	
+	public String[] getPossibleBuildings()
+	{
+//		int maximumNumberOfBuildings = this.MAX_HOUSES + this.MAX_HOTELS;
+		
+		//If they already have the maximum number of houses/hotels we return null
+		if(this.houses == this.MAX_HOUSES || this.hotels == this.MAX_HOTELS)
+			return null;
+		
+		//Get possible houses
+		int numberOfHousesLeft = this.MAX_HOUSES - this.houses;
+		String[] possibleHouses = new String[numberOfHousesLeft];
+		
+		int w = 0;
+		for(int i = numberOfHousesLeft; i >= 1; i--)
+		{
+			possibleHouses[w] = "Houses: " + (this.MAX_HOUSES - i);
+			w++;
+		}
+		
+		//Get possible Hotels
+		int numberOfHotelsLeft = this.MAX_HOTELS - this.hotels;
+		String[] possibleHotels = new String[numberOfHotelsLeft];
+		
+		w = 0;
+		for(int i = numberOfHotelsLeft; i >= 1; i--)
+		{
+			possibleHotels[w] = "Hotel: " + (this.MAX_HOTELS - i);
+			w++;
+		}
+		
+		
+		return new String[numberOfHousesLeft + numberOfHotelsLeft];
 	}
 
 	/**

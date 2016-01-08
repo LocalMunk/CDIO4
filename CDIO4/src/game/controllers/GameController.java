@@ -5,6 +5,8 @@ import java.util.Random;
 import desktop_resources.GUI;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
+import entities.fields.collection.FieldCollection;
+import entities.fields.ownable.Territory;
 import game.Dice;
 import game.Player;
 import game.Turn;
@@ -15,13 +17,12 @@ public class GameController
 	private Player[] players;
 	private Dice dice;
 	private Turn turn;
-	private GameBoard board;
+	private FieldCollection fieldCollection;
 	private String y;
 	private int amountofplayers;
 	
 	private boolean checkName(String name)
 	{
-		
 		if(name.length() >= 12 || name.contains(" "))
 			return false;
 		
@@ -39,7 +40,9 @@ public class GameController
 	 */
 	public GameController()
 	{
-		board = new GameBoard();
+		fieldCollection = new FieldCollection();
+		fieldCollection.initialize();
+		
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
 		this.players = new Player[amountofplayers];
@@ -111,7 +114,33 @@ public class GameController
 					StartField.getStartMoney(player.getName());
 				}
 			}
-			board.getField(player.getPosition() + 1).landOnField(player);
+			int position = player.getPosition();
+			Field[] fields = fieldCollection.getFieldList();
+			Field field = fieldCollection.getField(player.getPosition() + 1);
+			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
+			
+//			if(player.getFieldsOwned() != 0)
+//			{
+//				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
+//				if(GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
+//				{
+//					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
+//					
+//					//Get the field that the player selects
+//					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+//					
+//					
+//					
+//					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
+//					
+//					
+//					
+//					
+//					
+//				}
+//			}
+			
+			
 			if (player.getAccount().getBalance() == 0)
 			{
 				GUI.showMessage(player.getName() + " is dead");
@@ -123,7 +152,7 @@ public class GameController
 				int length = this.players.length;
 
 				this.players[turn.getCheck() - 1] = this.players[length - 1];
-				for (Field x : board.getAreaList())
+				for (Field x : fieldCollection.getFieldList())
 				{
 					try
 					{
