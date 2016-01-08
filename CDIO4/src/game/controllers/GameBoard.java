@@ -3,6 +3,7 @@ package game.controllers;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import desktop_fields.Field;
+import desktop_fields.Ownable;
 
 
 import entities.ChanceCards.ChanceCard;
@@ -83,7 +84,7 @@ public class GameBoard
 		    
 		    else if(item instanceof entities.fields.ownable.Territory)
 		    {
-		        background = Color.blue;
+		    	background = Color.blue;
 		        subtext    = "Territory";
 		    }
 		    

@@ -103,7 +103,7 @@ public class GameController
 			dice.roll();
 			for (int i = 0; i < dice.getValue(); i++)
 			{
-				if (player.getPosition() < 41)
+				if (player.getPosition() < fieldCollection.getFieldList().length)
 				{
 					GUI.removeAllCars(player.getName());
 					player.setPosition(1);
@@ -112,7 +112,7 @@ public class GameController
 				else
 				{
 					GUI.removeAllCars(player.getName());
-					player.setPosition(-40);
+					player.setPosition(-fieldCollection.getFieldList().length - 1);
 					GUI.setCar(player.getPosition(), player.getName());
 					StartField.getStartMoney(player);
 				}

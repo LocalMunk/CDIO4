@@ -1,5 +1,7 @@
 package entities.fields.ownable;
 
+import java.util.Properties;
+
 import desktop_resources.GUI;
 import entities.fields.abstracts.Ownable;
 import game.Player;
@@ -7,6 +9,8 @@ import game.Player;
 public class Territory extends Ownable
 {
 	private int rent;
+	
+	private String groupName;
 	
 	private int houses;
 	private int hotels;
@@ -16,6 +20,8 @@ public class Territory extends Ownable
 	
 	private final int HOUSE_PRICE = 500;
 	private final int HOTEL_PRICE = 2000;
+	
+	
 
 	/**
 	 * Creates a territory field
@@ -29,7 +35,7 @@ public class Territory extends Ownable
 	 * @param rent
 	 *            rent (int)
 	 */
-	public Territory(String name, String description, int fieldID, int price, int rent)
+	public Territory(String name, String description, String groupName, int fieldID, int price, int rent)
 	{
 		super(name, description, fieldID, price);
 		this.rent = rent;
