@@ -25,10 +25,9 @@ public class ChanceField extends Field {
 	}
 
 	@Override
-	public landOnField(Player player) {
-			if (GUI.getUserButtonPressed("Draw a Card", "Draw")){
-				
-			}
+	public void landOnField(Player player) {
+		if (GUI.getUserButtonPressed("Draw a Card", "Draw") != null){
+		}
 			
 	}
 

@@ -30,7 +30,7 @@ public class StartField extends Field
 		// TODO Auto-generated method stub
 
 	}
-	public static void getStartMoney(String name) {
+	public static void getStartMoney(Player player) {
 		player.getAccount().deposit(200);
 		GUI.setBalance(player.getName(), player.getAccount().getBalance());
 		// TODO Auto-generated method stub

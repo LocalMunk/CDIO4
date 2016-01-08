@@ -113,7 +113,7 @@ public class GameController
 					GUI.removeAllCars(player.getName());
 					player.setPosition(-21);
 					GUI.setCar(player.getPosition(), player.getName());
-					StartField.getStartMoney(player.getName());
+					StartField.getStartMoney(player);
 				}
 			}
 
