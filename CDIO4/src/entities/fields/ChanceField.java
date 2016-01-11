@@ -23,14 +23,16 @@ public class ChanceField extends Field {
 	public String draw (Player player){
 		chanceCardCollection = new ChanceCardCollection();
 		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
+		
 		if (rnd <= 4){
-			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
+			player.getAccount().deposit(chanceCardCollection.getCard(rnd).getValue());
 		}
 		else {
-			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
+			player.getAccount().withdraw(chanceCardCollection.getCard(rnd).getValue());
 		}
-		GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
-		return chanceCardCollection.getCardList()[rnd].getDescription();
+		GUI.displayChanceCard(chanceCardCollection.getCard(rnd).getDescription());
+		GUI.setBalance(player.getName(), player.getAccount().getBalance());
+		return chanceCardCollection.getCard(rnd).getDescription();
 	}
 
 	@Override
