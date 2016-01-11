@@ -9,6 +9,7 @@ public class Player
 	private boolean alive;
 	private int laborCampsOwned;
 	private int fleetsOwned;
+	private boolean jailed;
 
 	public Player(String x, int a, boolean b)
 	{
@@ -18,6 +19,7 @@ public class Player
 		alive = b;
 		fieldsOwned = 0;
 		setLaborCampsOwned(0);
+		jailed = false;
 	}
 
 	public String getName()
@@ -78,5 +80,11 @@ public class Player
 	public void setLaborCampsOwned(int laborCampsOwned)
 	{
 		this.laborCampsOwned = laborCampsOwned;
+	}
+	public boolean getJailed() {
+		return jailed;
+	}
+	public void setJailed(boolean jailed) {
+		this.jailed = jailed;
 	}
 }
