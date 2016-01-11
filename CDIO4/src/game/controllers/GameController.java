@@ -97,29 +97,42 @@ public class GameController
 	 */
 	public void game(Player player)
 	{
-		if (GUI.getUserButtonPressed(player.getName() + "'s turn, Press ENTER to roll the dice", "ENTER")
-		        .equals("ENTER"))
-		{
-			dice.roll();
-			for (int i = 0; i < dice.getValue(); i++)
-			{
-				if (player.getPosition() < 40)
-				{
-					GUI.removeAllCars(player.getName());
-					player.setPosition(1);
-					GUI.setCar(player.getPosition(), player.getName());
-				}
-				else
-				{
-					GUI.removeAllCars(player.getName());
-					player.setPosition(-39);
-					GUI.setCar(player.getPosition(), player.getName());
-					StartField.getStartMoney(player);
+		if(player.getJailed()){
+			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two ens to get out of jail", "ENTER")
+			        .equals("ENTER")){
+				dice.roll();
+				if(dice.getEquals()){
+					player.setJailed(false);
 				}
 			}
-
-			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
+				
+		}
+		else{
+			if (GUI.getUserButtonPressed(player.getName() + "'s turn, Press ENTER to roll the dice", "ENTER")
+		        .equals("ENTER"))
+				{
+					dice.roll();
+							
+					}
+				for (int i = 0; i < dice.getValue(); i++)
+				{
+					if (player.getPosition() < 40)
+					{
+						GUI.removeAllCars(player.getName());
+						player.setPosition(1);
+						GUI.setCar(player.getPosition(), player.getName());
+					}
+					else
+					{
+						GUI.removeAllCars(player.getName());
+						player.setPosition(-39);
+						GUI.setCar(player.getPosition(), player.getName());
+						StartField.getStartMoney(player);
+					}
+				}
 			
+			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
+			 }
 			
 			/*
 			 * Code to determine if the player can buy any hotels/houses
@@ -199,4 +212,4 @@ public class GameController
 //		GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
 //		return chanceCardCollection.getCardList()[rnd].getDescription();
 //	}
-}
+ 

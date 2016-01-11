@@ -15,9 +15,9 @@ public class GoToJail extends Field {
 	public void landOnField(Player player) {
 		if (GUI.getUserButtonPressed("You're going to jail", "Okay") != null){
 			player.setPosition(12);
-
+			player.setJailed(true);
+			GUI.removeAllCars(player.getName());
 			GUI.setCar(12, player.getName());
-
 			}
 		
 	}

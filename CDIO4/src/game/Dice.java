@@ -5,7 +5,7 @@ import desktop_resources.GUI;
 public class Dice
 {
 
-	private int sides, value;
+	private int sides, value, a, b;
 
 	public Dice(int a)
 	{
@@ -17,11 +17,18 @@ public class Dice
 	 */
 	public int roll()
 	{
-		int a = (int) (Math.random() * sides + 1);
-		int b = (int) (Math.random() * sides + 1);
+		a = (int) (Math.random() * sides + 1);
+		b = (int) (Math.random() * sides + 1);
 		GUI.setDice(a, b);
 		value = a + b;
 		return value;
+	}
+	
+	public boolean getEquals(){
+		if(a == b)
+			return true;
+		else
+			return false;
 	}
 
 	public int getValue()
