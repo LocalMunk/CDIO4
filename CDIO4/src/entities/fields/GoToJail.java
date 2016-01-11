@@ -1,5 +1,6 @@
 package entities.fields;
 
+import desktop_resources.GUI;
 import entities.fields.abstracts.Field;
 import game.Player;
 
@@ -12,7 +13,12 @@ public class GoToJail extends Field {
 
 	@Override
 	public void landOnField(Player player) {
-		// TODO Auto-generated method stub
+		if (GUI.getUserButtonPressed("You're going to jail", "Okay") != null){
+			player.setPosition(12);
+
+			GUI.setCar(12, player.getName());
+
+			}
 		
 	}
 
