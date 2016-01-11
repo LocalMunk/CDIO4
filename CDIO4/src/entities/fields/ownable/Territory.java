@@ -239,6 +239,8 @@ public class Territory extends Ownable
 			this.houses = numberOfBuildings;
 			GUI.setHouses(this.fieldID+1, this.houses);
 		}
+		
+		GUI.setBalance(player.getName(), player.getAccount().getBalance());
 	}
 	
 	public String[] concatString(String[] a, String[] b)
