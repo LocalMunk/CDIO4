@@ -147,7 +147,6 @@ public class GameController
 					int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
 					
 					chosenField.buyBuildings(buildingType, numberOfBuildings, player);
-					
 				}
 			}
 			

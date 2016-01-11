@@ -139,6 +139,16 @@ public class Territory extends Ownable
 		return this.hotels;
 	}
 	
+	public int getMaxNumberOfHouses()
+	{
+		return this.MAX_HOUSES;
+	}
+	
+	public int getMaxNumberOfHotels()
+	{
+		return this.MAX_HOTELS;
+	}
+	
 	public String[] getPossibleBuildings()
 	{
 //		int maximumNumberOfBuildings = this.MAX_HOUSES + this.MAX_HOTELS;

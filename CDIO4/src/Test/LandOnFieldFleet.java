@@ -25,12 +25,12 @@ public class LandOnFieldFleet
 	public void setUp() throws Exception
 	{
 
-		this.p1 = new Player("Henrik", 30000, true);
-		this.p2 = new Player("Bob", 10000, true);
-		this.fleet1 = new Fleet("Sea Grover", 10);
-		this.fleet2 = new Fleet("Second Sail", 6);
-		this.fleet3 = new Fleet("Privateer Armada", 20);
-		this.fleet4 = new Fleet("The Buccaneers", 16);
+//		this.p1 = new Player("Henrik", 30000, true);
+//		this.p2 = new Player("Bob", 10000, true);
+//		this.fleet1 = new Fleet("Sea Grover", 10);
+//		this.fleet2 = new Fleet("Second Sail", 6);
+//		this.fleet3 = new Fleet("Privateer Armada", 20);
+//		this.fleet4 = new Fleet("The Buccaneers", 16);
 
 	}
 
