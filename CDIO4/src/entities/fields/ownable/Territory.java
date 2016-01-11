@@ -9,7 +9,7 @@ import game.Player;
 
 public class Territory extends Ownable
 {
-	private int rent;
+	private int rent[] = new int [6];
 	
 	private String groupName;
 	
@@ -36,7 +36,7 @@ public class Territory extends Ownable
 	 * @param rent
 	 *            rent (int)
 	 */
-	public Territory(String name, String description, String groupName, int fieldID, int price, int rent)
+	public Territory(String name, String description, String groupName, int fieldID, int price, int[] rent)
 	{
 		super(name, description, fieldID, price);
 		this.rent = rent;
@@ -46,9 +46,9 @@ public class Territory extends Ownable
 	}
 
 	@Override
-	public int getRent()
+	public int  getRent()
 	{
-		return rent;
+		return rent[houses + hotels];
 	}
 
 	@Override
