@@ -44,28 +44,28 @@ public class FieldCollection
 		fields[36] = new ChanceField("Try your luck", "is your luck shit?", 36);
 		
 		//Territory
-		fields[1] 	= new Territory("R�dovrevej",			"Street", "Blue",1,60,10);
-		fields[3] 	= new Territory ("Hvidovrevej",			"Street", "Blue" ,3,60 ,10);
-		fields[6] 	= new Territory ("Roskildevej",			"Street", "Salmon",6, 100 ,10);
-		fields[8] 	= new Territory ("Valby langgade",		"Street", "Salmon",8,100 ,10);
-		fields[9] 	= new Territory ("Alle gad�",			"Street", "Salmon",9,60 ,10);
-		fields[10]	= new Territory ("Frederisksberg all�",	"Street", "Green",10,140 ,10);
-		fields[12]	= new Territory ("B�lwsvej",			"Street", "Green",12,140 ,10);
-		fields[13] 	= new Territory ("Gammelkonge vej", 	"Street", "Green",13,60 ,10);
-		fields[15] 	= new Territory ("Bernsstoffvej",		"Street", "Grey",15,180 ,10);
-		fields[21] 	= new Territory ("Hellerupvej",			"Street", "Grey",21,180 ,10);
-		fields[19] 	= new Territory ("Strandvejen",			"Street", "Grey",19,180 ,10);
-		fields[22] 	= new Territory ("Trianglen",			"Street", "Red",22,220 ,10);
-		fields[23] 	= new Territory("�sterbrogade", 		"Street", "Red", 23, 220, 10);
-		fields[24] 	= new Territory("Gr�nningen", 			"Street", "Red", 24, 240, 10);
-		fields[26] 	= new Territory("Bredgade", 			"Street", "White", 26, 260,10);
-		fields[27] 	= new Territory("Kgs. Nytorv", 			"Street", "White", 27, 260, 10);
-		fields[29] 	= new Territory("�stergade", 			"Street", "White", 29, 280,10);
-		fields[31] 	= new Territory("Amagertorv", 			"Street", "Yellow", 31, 300, 10);
-		fields[32] 	= new Territory("Vimmelskaftet", 		"Street", "Yellow", 32, 300, 10);
-		fields[35] 	= new Territory("Nygade",				"Street", "Yellow", 35, 320,10);
-		fields[39] 	= new Territory("Frederiksberggade", 	"Street", "Purple", 39, 350, 10);
-		fields[38] 	= new Territory("R�dhuspladsen", 		"Street", "Purple", 38, 400, 10);
+		fields[1] 	= new Territory("R�dovrevej",			"Street", "Blue",1,60, new int[] {50,250,750,2250,4000,6000} );
+		fields[3] 	= new Territory ("Hvidovrevej",			"Street", "Blue",3,60, new int[] {50,250,750,2250,4000,6000} );
+		fields[6] 	= new Territory ("Roskildevej",			"Street", "Salmon",6, 100 ,new int[]{100,600,1800,5400,8000,11000});
+		fields[8] 	= new Territory ("Valby langgade",		"Street", "Salmon",8,100,new int[]{100,600,1800,5400,8000,11000} );
+		fields[9] 	= new Territory ("Alle gad�",			"Street", "Salmon",9,60 ,new int[]{150,800,2000,6000,9000,12000});
+		fields[10]	= new Territory ("Frederisksberg all�",	"Street", "Green",10,140 ,new int[]{200,1000,3000,9000,12500,15000});
+		fields[12]	= new Territory ("B�lwsvej",			"Street", "Green",12,140 ,new int[]{200,1000,3000,9000,12500,15000});
+		fields[13] 	= new Territory ("Gammelkonge vej", 	"Street", "Green",13,60 ,new int[]{250,1250,3750,1000,14000,18000});
+		fields[15] 	= new Territory ("Bernsstoffvej",		"Street", "Grey",15,180 ,new int[]{300,1400,4000,11000,15000,19000});
+		fields[21] 	= new Territory ("Hellerupvej",			"Street", "Grey",21,180 ,new int[]{300,1400,4000,11000,15000,1900});
+		fields[19] 	= new Territory ("Strandvejen",			"Street", "Grey",19,180 ,new int[]{350,600,4400,12000,16000,19000});
+		fields[22] 	= new Territory ("Trianglen",			"Street", "Red",22,220 ,new int[]{300,1800,5000,14000,17500,21000});
+		fields[23] 	= new Territory("�sterbrogade", 		"Street", "Red", 23, 220, new int[]{350,1800,5000,14000,17500,21000});
+		fields[24] 	= new Territory("Gr�nningen", 			"Street", "Red", 24, 240, new int[]{300,1800,5000,14000,17500,21000});
+		fields[26] 	= new Territory("Bredgade", 			"Street", "White", 26, 260,new int[]{450,2200,6600,16000,19500,23000});
+		fields[27] 	= new Territory("Kgs. Nytorv", 			"Street", "White", 27, 260, new int[]{450,2200,6600,16000,19500,23000});
+		fields[29] 	= new Territory("�stergade", 			"Street", "White", 29, 280,new int[]{500,2400,7200,17000,20500,24000});
+		fields[31] 	= new Territory("Amagertorv", 			"Street", "Yellow", 31, 300,new int[]{550,2600,7800,18000,22000,25000});
+		fields[32] 	= new Territory("Vimmelskaftet", 		"Street", "Yellow", 32, 300,new int[]{550,2600,7800,18000,22000,25000});
+		fields[35] 	= new Territory("Nygade",				"Street", "Yellow", 35, 320,new int[]{600,3000,9000,20000,24000,28000});
+		fields[39] 	= new Territory("Frederiksberggade", 	"Street", "Purple", 39, 350,new int[]{700,3500,10000,22000,26000,30000});
+		fields[38] 	= new Territory("R�dhuspladsen", 		"Street", "Purple", 38, 400,new int[]{1000,4000,12000,28000,34000,40000});
 		
 		//Tax
 		fields[4] = new Tax("Pay Tax","You need to pay taxes",4,200,10);
