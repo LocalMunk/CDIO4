@@ -98,12 +98,23 @@ public class GameController
 	public void game(Player player)
 	{
 		if(player.getJailed()){
-			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two ens to get out of jail", "ENTER")
-			        .equals("ENTER")){
+			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two ens to get out of jail, or pay 500 USD", "Roll", "Pay")
+			        .equals("Roll")){
 				dice.roll();
 				if(dice.getEquals()){
 					player.setJailed(false);
+					GUI.showMessage("You rolled two equil dice, and therefore the guards are inclined to release you");
 				}
+				else{
+					GUI.showMessage("You failed to roll two equal die, and therefore you are still jailed");
+				}
+							}
+			else{
+				player.getAccount().withdraw(500);
+				GUI.setBalance(player.getName(), player.getAccount().getBalance());
+				player.setJailed(false);
+				GUI.showMessage("Your grandmother paid the bail, and you gave her the money back, you are a free man");
+				
 			}
 				
 		}
