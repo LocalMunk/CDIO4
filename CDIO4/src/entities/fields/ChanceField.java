@@ -1,32 +1,42 @@
 package entities.fields;
 
+import java.util.Random;
+
 import desktop_resources.GUI;
+import entities.ChanceCards.ChanceCard;
+import entities.ChanceCards.ChanceCardCollection;
 import entities.fields.abstracts.Field;
 import game.Player;
-import java.util.Random;
-import game.ChanceCards;
+import game.controllers.GameController;
+
 
 public class ChanceField extends Field {
 
-	// private String [] description = {
-	// "You've won 100 in the lottery",
-	// "You've won 200 in the lottery",
-	// "You got a ticket for driving and snapping, pay 100",
-	// "You drive too fast, get a speeding ticket, pay 300"
-	// };
-	// private int [] lottery = {
-	// 100, 200, 100, 300
-	// };
-	//
+	
+	private ChanceCardCollection chanceCardCollection;
 
 	public ChanceField(String name, String description, int fieldID) {
 		super(name, description, fieldID);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String draw (Player player){
+		chanceCardCollection = new ChanceCardCollection();
+		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
+		if (rnd <= 4){
+			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
+		}
+		else {
+			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
+		}
+		GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
+		return chanceCardCollection.getCardList()[rnd].getDescription();
+	}
 
 	@Override
 	public void landOnField(Player player) {
 		if (GUI.getUserButtonPressed("Draw a Card", "Draw") != null){
+			draw(player);
 		}
 			
 	}

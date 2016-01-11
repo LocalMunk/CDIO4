@@ -127,7 +127,10 @@ public class FieldCollection
 		for(Field field : this.getFieldList())
 		{
 			Player owner = field.getOwner();
-			if(field != null && field instanceof Territory && owner != null && owner == player) 
+			if(		field != null
+					&& field instanceof Territory
+					&& owner != null
+					&& owner == player) 
 			{
 				fields[i] = field;
 				i++;

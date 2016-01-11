@@ -143,8 +143,8 @@ public class Territory extends Ownable
 	{
 //		int maximumNumberOfBuildings = this.MAX_HOUSES + this.MAX_HOTELS;
 		
-		//If they already have the maximum number of houses/hotels we return null
-		if(this.houses == this.MAX_HOUSES || this.hotels == this.MAX_HOTELS)
+		//If they already have the maximum number of hotels we return null
+		if(this.hotels == this.MAX_HOTELS)
 			return null;
 		
 		//Get possible houses
@@ -214,6 +214,21 @@ public class Territory extends Ownable
 	{
 		// TODO Auto-generated method stub
 		owned = bool;
+	}
+	
+	public void buyBuildings(String buildingType, int numberOfBuildings, Player player)
+	{
+		if(buildingType == "Hotel")
+		{
+			player.getAccount().withdraw(HOTEL_PRICE);
+			this.hotels = numberOfBuildings;
+			GUI.setHotel(this.fieldID+1, true);
+			
+		} else if(buildingType == "House") {
+			player.getAccount().withdraw(HOUSE_PRICE);
+			this.houses = numberOfBuildings;
+			GUI.setHouses(this.fieldID+1, this.houses);
+		}
 	}
 	
 	public String[] concatString(String[] a, String[] b)

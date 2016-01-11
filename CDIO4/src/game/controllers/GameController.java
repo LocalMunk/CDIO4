@@ -19,7 +19,7 @@ public class GameController
 	private Dice dice;
 	private Turn turn;
 	private FieldCollection fieldCollection;
-	private ChanceCardCollection chanceCardCollection;
+//	private ChanceCardCollection chanceCardCollection;
 	private String y;
 	private int amountofplayers;
 	
@@ -44,7 +44,7 @@ public class GameController
 	{
 		fieldCollection = new FieldCollection();
 		fieldCollection.initialize();
-		chanceCardCollection = new ChanceCardCollection();
+//		chanceCardCollection = new ChanceCardCollection();
 		
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
@@ -121,6 +121,10 @@ public class GameController
 			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
 			
 			
+			/*
+			 * Code to determine if the player can buy any hotels/houses
+			 * Also allows the player to buy buildings
+			 */
 			if(player.getFieldsOwned() != 0)
 			{
 				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
@@ -133,10 +137,16 @@ public class GameController
 					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
 					
 					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
+					String buildingType;
 					
+					if(choice.startsWith("Hotel: "))
+						buildingType = "Hotel";
+					else
+						buildingType = "House";
 					
+					int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
 					
-					
+					chosenField.buyBuildings(buildingType, numberOfBuildings, player);
 					
 				}
 			}
@@ -179,14 +189,15 @@ public class GameController
 
 		}
 	}
-	public String draw (Player player){
-		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
-		if (rnd <= 4){
-			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
-		}
-		else {
-			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
-		}
-		return chanceCardCollection.getCardList()[rnd].getDescription();
-	}
+//	public String draw (Player player){
+//		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
+//		if (rnd <= 4){
+//			player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
+//		}
+//		else {
+//			player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
+//		}
+//		GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
+//		return chanceCardCollection.getCardList()[rnd].getDescription();
+//	}
 }
