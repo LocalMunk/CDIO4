@@ -23,4 +23,9 @@ public class ChanceCardCollection
 	{
 		return chances;
 	}
+	
+	public ChanceCard getCard(int index)
+	{
+		return chances[index];
+	}
 }
