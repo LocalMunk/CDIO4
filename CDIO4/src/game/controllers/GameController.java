@@ -103,7 +103,7 @@ public class GameController
 			dice.roll();
 			for (int i = 0; i < dice.getValue(); i++)
 			{
-				if (player.getPosition() < fieldCollection.getFieldList().length)
+				if (player.getPosition() < 40)
 				{
 					GUI.removeAllCars(player.getName());
 					player.setPosition(1);
@@ -112,7 +112,7 @@ public class GameController
 				else
 				{
 					GUI.removeAllCars(player.getName());
-					player.setPosition(-fieldCollection.getFieldList().length - 1);
+					player.setPosition(-39);
 					GUI.setCar(player.getPosition(), player.getName());
 					StartField.getStartMoney(player);
 				}
@@ -127,7 +127,7 @@ public class GameController
 				Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
 				if(ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
 				{
-					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
+					String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
 					
 					//Get the field that the player selects
 					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));

@@ -29,7 +29,7 @@ public class Fleet extends Ownable
 	public int getRent()
 	{
 		// TODO Auto-generated method stub
-		int checker = owner.getFieldsOwned();
+		int checker = owner.getFleetsOwned();
 		int payout = this.rent[checker-1];
 		
 		return payout;
@@ -62,7 +62,7 @@ public class Fleet extends Ownable
 				owned = true;
 				owner = player;
 				GUI.showMessage("You are the proud owner of this.");
-				player.addFieldsOwned();
+				player.addFleetsOwned();
 				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());

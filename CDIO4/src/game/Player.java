@@ -8,6 +8,7 @@ public class Player
 	private int fieldsOwned;
 	private boolean alive;
 	private int laborCampsOwned;
+	private int fleetsOwned;
 
 	public Player(String x, int a, boolean b)
 	{
@@ -43,10 +44,20 @@ public class Player
 	{
 		fieldsOwned++;
 	}
+	
+	public void addFleetsOwned() 
+	{
+		fleetsOwned++;
+	}
 
 	public int getFieldsOwned()
 	{
 		return fieldsOwned;
+	}
+	
+	public int getFleetsOwned()
+	{
+		return fleetsOwned;
 	}
 
 	public boolean isAlive()

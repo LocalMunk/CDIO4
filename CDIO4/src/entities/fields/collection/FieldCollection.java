@@ -127,7 +127,7 @@ public class FieldCollection
 		for(Field field : this.getFieldList())
 		{
 			Player owner = field.getOwner();
-			if(field instanceof Territory && owner != null && owner == player) 
+			if(field != null && field instanceof Territory && owner != null && owner == player) 
 			{
 				fields[i] = field;
 				i++;
@@ -140,7 +140,7 @@ public class FieldCollection
 		ArrayList<Territory> returnFields = new ArrayList<Territory>();
 		for(Field field : fields)
 		{
-			if((((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields)))
+			if(field != null && (((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields)))
 				returnFields.add((Territory)field);
 		}
 		
