@@ -104,16 +104,4 @@ public class GameBoard
 			GUI.create(fieldsGUI);
 	
 	}
-
-	public Field getField(int a)
-	{
-		a--;
-		a--;
-		return fields[a];
-	}
-
-	public Field[] getAreaList()
-	{
-		return fields;
-	}
 }

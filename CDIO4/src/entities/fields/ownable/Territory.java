@@ -75,6 +75,7 @@ public class Territory extends Ownable
 				owned = true;
 				owner = player;
 				GUI.showMessage("You are the proud owner of this.");
+				//GUI isn't 0 indexed so we add 1
 				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				player.addFieldsOwned();

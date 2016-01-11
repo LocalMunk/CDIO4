@@ -15,7 +15,7 @@ public class Player
 	{
 		name = x;
 		account = new Account(a);
-		position = 1;
+		position = 0;
 		alive = b;
 		fieldsOwned = 0;
 		setLaborCampsOwned(0);

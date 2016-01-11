@@ -127,22 +127,24 @@ public class GameController
 					}
 				for (int i = 0; i < dice.getValue(); i++)
 				{
-					if (player.getPosition() < 40)
+					if (player.getPosition() < 39)
 					{
 						GUI.removeAllCars(player.getName());
 						player.setPosition(1);
-						GUI.setCar(player.getPosition(), player.getName());
+						//GUI isn't 0 indexed so we add 1
+						GUI.setCar(player.getPosition() + 1, player.getName());
 					}
 					else
 					{
 						GUI.removeAllCars(player.getName());
 						player.setPosition(-39);
-						GUI.setCar(player.getPosition(), player.getName());
+						//GUI isn't 0 indexed so we add 1
+						GUI.setCar(player.getPosition() + 1, player.getName());
 						StartField.getStartMoney(player);
 					}
 				}
 			
-			fieldCollection.getField(player.getPosition() + 1).landOnField(player);
+			fieldCollection.getField(player.getPosition()).landOnField(player);
 			 }
 			
 			/*
