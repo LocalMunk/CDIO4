@@ -74,13 +74,14 @@ public class Fleet extends Ownable
 		 */
 		else if (owned && owner != player)
 		{
+			if (owner.getJailed()==false)
+			{
 			int payout = this.getRent();
 			owner.getAccount().deposit(player.getAccount().withdraw(payout));
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
-		}
+			}
 		else
-		{
 			System.out.println("An error occured");
 		}
 	}
