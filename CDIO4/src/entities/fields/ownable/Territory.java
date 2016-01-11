@@ -230,12 +230,15 @@ public class Territory extends Ownable
 	{
 		if(buildingType == "Hotel")
 		{
-			player.getAccount().withdraw(HOTEL_PRICE);
+			int hotelPrice = 	((this.MAX_HOUSES - this.getNumberOfHouses()) * this.HOUSE_PRICE)
+							+	(this.HOTEL_PRICE * numberOfBuildings);
+			
+			player.getAccount().withdraw(hotelPrice);
 			this.hotels = numberOfBuildings;
 			GUI.setHotel(this.fieldID+1, true);
 			
 		} else if(buildingType == "House") {
-			player.getAccount().withdraw(HOUSE_PRICE);
+			player.getAccount().withdraw(HOUSE_PRICE*numberOfBuildings);
 			this.houses = numberOfBuildings;
 			GUI.setHouses(this.fieldID+1, this.houses);
 		}
