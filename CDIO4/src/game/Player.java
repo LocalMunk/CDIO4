@@ -11,12 +11,12 @@ public class Player
 	private int fleetsOwned;
 	private boolean jailed;
 
-	public Player(String x, int a, boolean b)
+	public Player(String x, int a)
 	{
 		name = x;
 		account = new Account(a);
 		position = 0;
-		alive = b;
+		alive = true;
 		fieldsOwned = 0;
 		setLaborCampsOwned(0);
 		jailed = false;

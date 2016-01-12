@@ -30,7 +30,7 @@ public class FieldCollection
 	{
 		Dice diceone = new Dice(6);
 		
-		int[] fleetRent = new int[] {400, 500, 600, 700};
+		int[] fleetRent = new int[] {500, 1000, 2000, 4000};
 
 		//Start fields
 		fields[0] = new StartField("Start",0,"Start felt");

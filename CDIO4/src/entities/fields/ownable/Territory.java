@@ -95,6 +95,9 @@ public class Territory extends Ownable
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
 			}
+			else{
+				GUI.showMessage("The owner is jailed so you pass through without paying him money");
+			}
 		}
 
 		/**

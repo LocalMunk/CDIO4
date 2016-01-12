@@ -31,7 +31,7 @@ public class StartField extends Field
 
 	}
 	public static void getStartMoney(Player player) {
-		player.getAccount().deposit(200);
+		player.getAccount().deposit(2000);
 		GUI.setBalance(player.getName(), player.getAccount().getBalance());
 		// TODO Auto-generated method stub
 		

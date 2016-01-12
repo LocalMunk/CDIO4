@@ -73,19 +73,19 @@ public class Brewery extends Ownable
 		 */
 		else if (owned && owner != player)
 		{
-		if (owner.getJailed()==false)
-		{
-			int getmoney = this.getRent();
-			owner.getAccount().deposit(player.getAccount().withdraw(getmoney));
-			GUI.setBalance(player.getName(), player.getAccount().getBalance());
-			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
+			if (owner.getJailed()==false)
+			{
+				int getmoney = this.getRent();
+				owner.getAccount().deposit(player.getAccount().withdraw(getmoney));
+				GUI.setBalance(player.getName(), player.getAccount().getBalance());
+				GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
+			}
+			else{
+				GUI.showMessage("The owner is jailed so you pass through without paying him money");
+			}
 		}
-		
 		else if (price > player.getAccount().getBalance())
 			GUI.showMessage("Your balance is too low");
-		}
-		
-
 	}
 
 	/**

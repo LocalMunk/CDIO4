@@ -81,16 +81,20 @@ public class Fleet extends Ownable
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			GUI.setBalance(owner.getName(), owner.getAccount().getBalance());
 			}
+			else{
+				GUI.showMessage("The owner is jailed so you pass through without paying him money");
+			}
 			/**
 			 * If the players balance is too low,when buying a field - the GUI shows
 			 * a message
 			 */
+		}
 			else if (price > player.getAccount().getBalance())
 			{
 				GUI.showMessage("Your balance is too low");
 
 			}
-		}
+		
 	}
 
 	@Override

@@ -143,7 +143,7 @@ public class GameController
 					else
 					{
 						GUI.removeAllCars(player.getName());
-						player.setPosition(1);
+						player.setPosition(0);
 						//GUI isn't 0 indexed so we add 1
 						GUI.setCar(player.getPosition() + 1, player.getName());
 						StartField.getStartMoney(player);
@@ -157,7 +157,7 @@ public class GameController
 			 * Code to determine if the player can buy any hotels/houses
 			 * Also allows the player to buy buildings
 			 */
-			if(player.getFieldsOwned() != 0)
+			if(player.getFieldsOwned() != 0 && player.getJailed()==false) 
 			{
 				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
 				Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
