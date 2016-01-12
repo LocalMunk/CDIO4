@@ -14,7 +14,7 @@ import game.Player;
 public class LandOnFieldFleet
 {
 
-	private Player p1 = new Player("Henrik", 30000, true);;
+	private Player p1 = new Player("Henrik", 30000);
 	private Player p2;
 	private Fleet fleet1;
 	private Fleet fleet2;
@@ -27,8 +27,8 @@ public class LandOnFieldFleet
 	{
 
 		int[] fleetRent = new int[] {400, 500, 600, 700};
-		this.p2 = new Player("Bob", 1000, true);
-		this.fleet1 = new Fleet("Første","Fleet",14,4000 , fleetRent);
+		this.p2 = new Player("Bob", 1000);
+		this.fleet1 = new Fleet("Fï¿½rste","Fleet",14,4000 , fleetRent);
 		this.fleet2= new Fleet("Anden","Fleet",15,4000 , fleetRent);
 		this.fleet3 = new Fleet("Tredje","Fleet",16,4000 , fleetRent);
 		this.fleet4 = new Fleet("Fjerde","Fleet",17,4000 , fleetRent);

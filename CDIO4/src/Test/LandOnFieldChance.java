@@ -18,8 +18,8 @@ public class LandOnFieldChance {
 
 	@Before
 	public void setUp() throws Exception {
-		this.p1 = new Player("Henrik", 30000, true);
-		this.p2 = new Player("Bob", 10000, true);
+		this.p1 = new Player("Henrik", 30000);
+		this.p2 = new Player("Bob", 10000);
 		this.chance1 = new ChanceField("Sea Grover","dewrp", 10);
 	}
 

@@ -21,7 +21,7 @@ public class GoToJailTest {
 
 		fields.initialize();
 
-		this.Rasmus = new Player("Rasmus", 39475, true);
+		this.Rasmus = new Player("Rasmus", 39475);
 
 		GUI.addPlayer(this.Rasmus.getName(), 39475);
 

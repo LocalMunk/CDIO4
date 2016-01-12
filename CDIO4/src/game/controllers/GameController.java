@@ -64,7 +64,7 @@ public class GameController
 				
 			} while(doContinue);
 			
-			this.players[i] = new Player(name, 30000, true);
+			this.players[i] = new Player(name, 30000);
 			GUI.addPlayer(this.players[i].getName(), 30000);
 			GUI.setCar(1, this.players[i].getName());
 		}
