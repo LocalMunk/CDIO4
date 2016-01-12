@@ -46,10 +46,10 @@ public class GameBoard {
 				background = Color.yellow.brighter();
 				subtext = "Territory";
 			} else if (i == 38 || i == 39) {
-				background = Color.lightGray;
+				background = Color.magenta.darker();
 				subtext = "Territory";
 			} else if (item instanceof entities.fields.Tax) {
-				background = Color.magenta.darker();
+				background = Color.lightGray;
 				subtext = "Tax";
 			}
 
