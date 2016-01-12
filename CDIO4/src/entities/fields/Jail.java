@@ -26,5 +26,4 @@ public class Jail extends Field {
 		// TODO Auto-generated method stub
 		
 	}
-// add metode til at være i fængsel
 }

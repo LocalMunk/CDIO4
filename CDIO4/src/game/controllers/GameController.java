@@ -98,23 +98,29 @@ public class GameController
 	public void game(Player player)
 	{
 		if(player.getJailed()){
-			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two ens to get out of jail, or pay 500 USD", "Roll", "Pay")
+			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two equal dice to get out of jail, or pay 3000", "Roll", "Pay")
 			        .equals("Roll")){
 				dice.roll();
 				if(dice.getEquals()){
 					player.setJailed(false);
-					GUI.showMessage("You rolled two equil dice, and therefore the guards are inclined to release you");
+					GUI.showMessage("You rolled two equal dice, and therefore the guards are inclined to release you");
+					player.setPosition(10);
+					//GUI isn't 0 indexed so we add 1
+					GUI.setCar(player.getPosition()+1, player.getName());
+					
 				}
 				else{
 					GUI.showMessage("You failed to roll two equal die, and therefore you are still jailed");
 				}
 							}
 			else{
-				player.getAccount().withdraw(500);
+				player.getAccount().withdraw(3000);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 				player.setJailed(false);
 				GUI.showMessage("Your grandmother paid the bail, and you gave her the money back, you are a free man");
-				
+				player.setPosition(10);
+				//GUI isn't 0 indexed so we add 1
+				GUI.setCar(player.getPosition()+1, player.getName());
 			}
 				
 		}
@@ -130,14 +136,14 @@ public class GameController
 					if (player.getPosition() < 39)
 					{
 						GUI.removeAllCars(player.getName());
-						player.setPosition(1);
+						player.setPosition(player.getPosition() + 1);
 						//GUI isn't 0 indexed so we add 1
 						GUI.setCar(player.getPosition() + 1, player.getName());
 					}
 					else
 					{
 						GUI.removeAllCars(player.getName());
-						player.setPosition(-39);
+						player.setPosition(1);
 						//GUI isn't 0 indexed so we add 1
 						GUI.setCar(player.getPosition() + 1, player.getName());
 						StartField.getStartMoney(player);

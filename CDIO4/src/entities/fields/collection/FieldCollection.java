@@ -44,28 +44,29 @@ public class FieldCollection
 		fields[36] = new ChanceField("Try your luck", "How is your luck??", 36);
 		
 		//Territory
-		fields[1] 	= new Territory("R�dovrevej",			"Rødovrevej: Price 1200", "Blue",1,1200, new int[] {50,250,750,2250,4000,6000} );
+		fields[1] 	= new Territory("Rodovrevej",			"Rødovrevej: Price 1200", "Blue",1,1200, new int[] {50,250,750,2250,4000,6000} );
 		fields[3] 	= new Territory ("Hvidovrevej",			"Hvidovrevej: Price 1200", "Blue",3,1200, new int[] {50,250,750,2250,4000,6000} );
 		fields[6] 	= new Territory ("Roskildevej",			"Roskildevej: Price 2000", "Salmon",6, 2000 ,new int[]{100,600,1800,5400,8000,11000});
 		fields[8] 	= new Territory ("Valby langgade",		"Valby langgade: Price 2000", "Salmon",8,2000,new int[]{100,600,1800,5400,8000,11000} );
-		fields[9] 	= new Territory ("Alle gad�",			"Allé gade: Price 2400", "Salmon",9,2400 ,new int[]{150,800,2000,6000,9000,12000});
-		fields[11]	= new Territory ("Frederisksberg all�",	"Frederisksberg allé: Price 2800", "Green",11,2800 ,new int[]{200,1000,3000,9000,12500,15000});
-		fields[12]	= new Territory ("B�lwsvej",			"Bülowsvej: Price 2800", "Green",12,2800 ,new int[]{200,1000,3000,9000,12500,15000});
+		fields[9] 	= new Territory ("Allé gade",			"Allé gade: Price 2400", "Salmon",9,2400 ,new int[]{150,800,2000,6000,9000,12000});
+		fields[11]	= new Territory ("Frederisksberg allé",	"Frederisksberg allé: Price 2800", "Green",11,2800 ,new int[]{200,1000,3000,9000,12500,15000});
+		fields[12]	= new Territory ("Bulowsvej",			"Bülowsvej: Price 2800", "Green",12,2800 ,new int[]{200,1000,3000,9000,12500,15000});
 		fields[13] 	= new Territory ("Gammelkonge vej", 	"Gammelkonge vej: Price 3200", "Green",13,3200 ,new int[]{250,1250,3750,1000,14000,18000});
 		fields[17] 	= new Territory ("Bernsstoffvej",		"Bernsstoffvej: Price 3600", "Grey",17,3600 ,new int[]{300,1400,4000,11000,15000,19000});
 		fields[18] 	= new Territory ("Strandvejen",			"Strandvejen: Price 4000", "Grey",18,4000 ,new int[]{350,600,4400,12000,16000,19000});
 		fields[19] 	= new Territory ("Hellerupvej",			"Hellerupvej: Price 3600", "Grey",19,3600 ,new int[]{300,1400,4000,11000,15000,1900});
 		fields[21] 	= new Territory ("Trianglen",			"Trianglen: Price 4400", "Red",21,4400 ,new int[]{300,1800,5000,14000,17500,21000});
-		fields[22] 	= new Territory("�sterbrogade", 		"Østerbrogade: Price 4400", "Red", 22, 4400, new int[]{350,1800,5000,14000,17500,21000});
-		fields[23] 	= new Territory("Gr�nningen", 			"Grønningen: Price 4800", "Red", 23, 4800, new int[]{300,1800,5000,14000,17500,21000});
+		fields[22] 	= new Territory("Osterbrogade", 		"Østerbrogade: Price 4400", "Red", 22, 4400, new int[]{350,1800,5000,14000,17500,21000});
+		fields[23] 	= new Territory("Gronningen", 			"Grønningen: Price 4800", "Red", 23, 4800, new int[]{300,1800,5000,14000,17500,21000});
 		fields[26] 	= new Territory("Bredgade", 			"Bredgade: Price 5200", "White", 26, 5200,new int[]{450,2200,6600,16000,19500,23000});
 		fields[27] 	= new Territory("Kgs. Nytorv", 			"Kgs. Nytorv: Price 5200", "White", 27, 5200, new int[]{450,2200,6600,16000,19500,23000});
-		fields[29] 	= new Territory("�stergade", 			"Østergade: Price 5600", "White", 29, 5600,new int[]{500,2400,7200,17000,20500,24000});
+		fields[29] 	= new Territory("Ostergade", 			"Østergade: Price 5600", "White", 29, 5600,new int[]{500,2400,7200,17000,20500,24000});
 		fields[31] 	= new Territory("Amagertorv", 			"Amagertorv: Price 6000", "Yellow", 31, 6000,new int[]{550,2600,7800,18000,22000,25000});
 		fields[32] 	= new Territory("Vimmelskaftet", 		"Vimmelskaftet: Price 6000", "Yellow", 32, 6000,new int[]{550,2600,7800,18000,22000,25000});
 		fields[35] 	= new Territory("Nygade",				"Nygade: Price 6400", "Yellow", 35, 6400,new int[]{600,3000,9000,20000,24000,28000});
-		fields[38] 	= new Territory("R�dhuspladsen", 		"Rådhuspladsen: Price 8000", "Purple", 38, 8000,new int[]{1000,4000,12000,28000,34000,40000});
-		fields[39] 	= new Territory("Frederiksberggade", 	"Frederiksberggade: Price 7000", "Purple", 39, 7000,new int[]{700,3500,10000,22000,26000,30000});
+		fields[38] 	= new Territory("Frederiksberggade", 	"Frederiksberggade: Price 7000", "Purple", 38, 7000,new int[]{700,3500,10000,22000,26000,30000});
+		fields[39] 	= new Territory("Raadhuspladsen", 		"Rådhuspladsen: Price 8000", "Purple", 39, 8000,new int[]{1000,4000,12000,28000,34000,40000});
+		
 		
 		
 		//Tax
@@ -73,7 +74,7 @@ public class FieldCollection
 		fields[37] = new Tax("Skat", "Pay your damned taxes", 37, 200, 10);
 		
 		//Fleet
-		fields[5] = new Fleet ("�resundsredderiet","Øresundsredderiet: Price 4000",5,4000, fleetRent);
+		fields[5] = new Fleet ("Oresundsredderiet","Øresundsredderiet: Price 4000",5,4000, fleetRent);
 		fields[14] = new Fleet("DFDS","DFDS: Price 4000",14,4000 , fleetRent);
 		fields[25] = new Fleet("A/S. redderiet", "A/S. redderiet: Price 4000", 25, 4000, fleetRent);
 		fields[34] = new Fleet("Bornholm", "Bornholm: Price 4000", 34, 4000, fleetRent);

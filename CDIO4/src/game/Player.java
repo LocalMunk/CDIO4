@@ -39,7 +39,7 @@ public class Player
 
 	public void setPosition(int x)
 	{
-		position += x;
+		position = x;
 	}
 
 	public void addFieldsOwned()
