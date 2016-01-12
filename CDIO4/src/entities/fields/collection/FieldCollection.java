@@ -70,8 +70,8 @@ public class FieldCollection
 		
 		
 		//Tax
-		fields[4] = new Tax("Pay Tax","You need to pay taxes",4,200,10);
-		fields[37] = new Tax("Skat", "Pay your damned taxes", 37, 200, 10);
+		fields[4] = new Tax("Pay Tax","You need to pay taxes",4,4000,10);
+		fields[37] = new Tax("Skat", "Pay your damned taxes", 37, 4000, 10);
 		
 		//Fleet
 		fields[5] = new Fleet ("Oresundsredderiet","Øresundsredderiet: Price 4000",5,4000, fleetRent);

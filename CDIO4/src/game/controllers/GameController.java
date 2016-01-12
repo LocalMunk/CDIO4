@@ -97,6 +97,7 @@ public class GameController
 	 */
 	public void game(Player player)
 	{
+		if(player.isAlive()){
 		if(player.getJailed()){
 			if (GUI.getUserButtonPressed(player.getName() + ", You are in jail, roll two equal dice to get out of jail, or pay 3000", "Roll", "Pay")
 			        .equals("Roll")){
@@ -190,10 +191,8 @@ public class GameController
 			}
 			if (player.getAccount().getBalance() <= 0)
 			{
-				this.amountofplayers--;
-				int length = this.players.length;
-
-				this.players[turn.getCheck() - 1] = this.players[length - 1];
+				
+				player.setAlive(false);
 				for (Field x : fieldCollection.getFieldList())
 				{
 					try
@@ -216,8 +215,8 @@ public class GameController
 				GUI.close();
 				System.exit(0);
 			}
+		}
 			turn.change();
-
 		}
 	}
 //	public String draw (Player player){
