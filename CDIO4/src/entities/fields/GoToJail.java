@@ -14,10 +14,10 @@ public class GoToJail extends Field {
 	@Override
 	public void landOnField(Player player) {
 		if (GUI.getUserButtonPressed("You're going to jail", "Okay") != null){
-			player.setPosition(12);
+			player.setPosition(10);
 			player.setJailed(true);
 			GUI.removeAllCars(player.getName());
-			GUI.setCar(12, player.getName());
+			GUI.setCar(11, player.getName());
 			}
 		
 	}
