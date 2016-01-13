@@ -6,13 +6,11 @@ public abstract class Ownable extends Field
 {
 	protected int price;
 	protected Player owner;
-	protected boolean owned;
 	
 	public Ownable(String name, String description, int fieldID, int price)
 	{
 		super(name, description, fieldID);
 		this.price = price;
-		this.owned = false;
 	}
 
 	public abstract int getRent();

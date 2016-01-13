@@ -28,7 +28,7 @@ public class Brewery extends Ownable
 	@Override
 	public int getRent()
 	{
-		return dice.roll() * rate * owner.getLaborCampsOwned();
+		return dice.roll() * rate * owner.getLaborCampsOwned(); //fix this
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class Brewery extends Ownable
 		 * Checks whether the player is owner of the field
 		 * 
 		 */
-		else if (owned == false)
+		else if (owner == null)
 		{
 
 			/**
@@ -57,13 +57,11 @@ public class Brewery extends Ownable
 			if (player.getAccount().getBalance() >= price
 			        && GUI.getUserLeftButtonPressed("Do you want to buy this field?", "Yes", "No"))
 			{
-				owned = true;
 				owner = player;
 				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
-				player.setLaborCampsOwned(player.getLaborCampsOwned() + 1);
-			}
+				}
 		}
 
 		/**
@@ -71,7 +69,7 @@ public class Brewery extends Ownable
 		 * the otherplayer
 		 * 
 		 */
-		else if (owned && owner != player)
+		else if (owner != null && owner != player)
 		{
 			if (owner.getJailed()==false)
 			{
@@ -116,15 +114,5 @@ public class Brewery extends Ownable
 	{
 		// TODO Auto-generated method stub
 		return owner;
-	}
-
-	/**
-	 * Release the fields owned by a given player at his death
-	 */
-	@Override
-	public void setOwned(boolean bool)
-	{
-		// TODO Auto-generated method stub
-		owned = bool;
 	}
 }

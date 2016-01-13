@@ -20,7 +20,7 @@ import game.controllers.GameBoard;
 public class FieldCollection
 {
 	private Field[] fields = new Field[40];
-//	private desktop_fields.Field[] fields = new desktop_fields.Field[22];
+	//	private desktop_fields.Field[] fields = new desktop_fields.Field[22];
 
 	/**
 	 * builds the gameboard, the first part builds the GUI board, and the second
@@ -29,12 +29,12 @@ public class FieldCollection
 	public Field[] initialize()
 	{
 		Dice diceone = new Dice(6);
-		
+
 		int[] fleetRent = new int[] {500, 1000, 2000, 4000};
 
 		//Start fields
 		fields[0] = new StartField("Start",0,"Start felt");
-		
+
 		//Chance cards
 		fields[2] = new ChanceField("Try your luck","How is your luck?",2);
 		fields[7] = new ChanceField("Try your luck","How is your luck?",7);
@@ -42,7 +42,7 @@ public class FieldCollection
 		fields[24] = new ChanceField("Try your luck","How is your luck?",24);
 		fields[33] = new ChanceField("Try your luck", "How is your luck??", 33);
 		fields[36] = new ChanceField("Try your luck", "How is your luck??", 36);
-		
+
 		//Territory
 		fields[1] 	= new Territory("Rodovrevej",			"Rødovrevej: Price 1200", "Blue",1,1200, new int[] {50,250,750,2250,4000,6000} );
 		fields[3] 	= new Territory ("Hvidovrevej",			"Hvidovrevej: Price 1200", "Blue",3,1200, new int[] {50,250,750,2250,4000,6000} );
@@ -66,36 +66,36 @@ public class FieldCollection
 		fields[35] 	= new Territory("Nygade",				"Nygade: Price 6400", "Yellow", 35, 6400,new int[]{600,3000,9000,20000,24000,28000});
 		fields[38] 	= new Territory("Frederiksberggade", 	"Frederiksberggade: Price 7000", "Purple", 38, 7000,new int[]{700,3500,10000,22000,26000,30000});
 		fields[39] 	= new Territory("Raadhuspladsen", 		"Rådhuspladsen: Price 8000", "Purple", 39, 8000,new int[]{1000,4000,12000,28000,34000,40000});
-		
-		
-		
+
+
+
 		//Tax
 		fields[4] = new Tax("Pay Tax","You need to pay taxes",4,4000,10);
 		fields[37] = new Tax("Skat", "Pay your damned taxes", 37, 4000, 10);
-		
+
 		//Fleet
-		fields[5] = new Fleet ("Oresundsredderiet","Øresundsredderiet: Price 4000",5,4000, fleetRent);
-		fields[14] = new Fleet("DFDS","DFDS: Price 4000",14,4000 , fleetRent);
-		fields[25] = new Fleet("A/S. redderiet", "A/S. redderiet: Price 4000", 25, 4000, fleetRent);
-		fields[34] = new Fleet("Bornholm", "Bornholm: Price 4000", 34, 4000, fleetRent);
-		
+		fields[5] = new Fleet ("Oresundsredderiet","Øresundsredderiet: Price 4000",5,4000, fleetRent, this);
+		fields[14] = new Fleet("DFDS","DFDS: Price 4000",14,4000 , fleetRent, this);
+		fields[25] = new Fleet("A/S. redderiet", "A/S. redderiet: Price 4000", 25, 4000, fleetRent, this);
+		fields[34] = new Fleet("Bornholm", "Bornholm: Price 4000", 34, 4000, fleetRent, this);
+
 		//Jail
 		fields[10] = new Jail ("Jail","This is the jail",10);
 		fields[30] = new GoToJail("Go to jail", "go to jail", 30);
-		
+
 		//Brewery
 		fields[16] = new Brewery ("Tuborg","Tuborg: Price 3000",16, 3000, 10, diceone);
 		fields[28] = new Brewery("Coca-Cola", "Coca-Cola: Price 3000", 28, 3000, 100, diceone);
-		
+
 		//Parking
 		fields[20] = new FreeParking ("Helle","Park free here",20);
-		
+
 		//Initialize the GUI
 		GameBoard.initializeGUI(fields);
-		
+
 		return this.fields;
 	}
-	
+
 
 	public Field getField(int index)
 	{
@@ -106,7 +106,7 @@ public class FieldCollection
 	{
 		return fields;
 	}
-	
+
 	public Field getFieldByName(String fieldName)
 	{
 		for(Field field : fields)
@@ -114,16 +114,16 @@ public class FieldCollection
 			if(field.getName().equals(fieldName))
 				return field;
 		}
-		
+
 		return null;
 	}
-	
+
 	public Field[] getOwnedTerritoryBuildable(Player player)
 	{
 		Field[] fields = new Field[player.getFieldsOwned()];
-		
+
 		int i = 0;
-		
+
 		for(Field field : this.getFieldList())
 		{
 			Player owner = field.getOwner();
@@ -136,29 +136,29 @@ public class FieldCollection
 				i++;
 			}
 		}
-		
+
 		if(fields[0] == null)
 			return new Field[0];
-		
+
 		ArrayList<Territory> returnFields = new ArrayList<Territory>();
 		for(Field field : fields)
 		{
 			if(	field != null
-				&& (((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields))
-				&& ((Territory)field).getNumberOfHotels() != ((Territory)field).getMaxNumberOfHotels()
-				&& ((Territory)field).getNumberOfHouses() != ((Territory)field).getMaxNumberOfHouses()
-				)
+					&& (((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields))
+					&& ((Territory)field).getNumberOfHotels() != ((Territory)field).getMaxNumberOfHotels()
+					&& ((Territory)field).getNumberOfHouses() != ((Territory)field).getMaxNumberOfHouses()
+					)
 				returnFields.add((Territory)field);
 		}
-		
+
 		return returnFields.toArray(new Field[returnFields.size()]);
 	}
-	
+
 	public Field[] getOwnedTerritory(Player player)
 	{
 		Field[] fields = new Field[player.getFieldsOwned()];
 		int i = 0;
-		
+
 		for(Field field : this.getFieldList())
 		{
 			Player owner = field.getOwner();
@@ -168,21 +168,56 @@ public class FieldCollection
 				i++;
 			}
 		}
-		
+
 		return fields;
 	}
-	
+
 	public String[] getFieldNames(Field[] fields)
 	{
 		String[] fieldNames = new String[fields.length];
-		
+
 		int i = 0;
 		for(Field field : fields)
 		{
 			fieldNames[i] = field.getName();
 			i++;
 		}
-		
+
 		return fieldNames;
 	}
+
+	public int getAmountFleetsOwned(Player player){
+		int out = 0;
+		if(fields[5].getOwner() == player)
+			out++;
+		if(fields[14].getOwner() == player)
+			out++;	
+		if(fields[25].getOwner() == player)
+			out++;		
+		if(fields[34].getOwner() == player)
+			out++;		
+		return out;
+	}
+
+
+	public Field[] getOwnedFields(Player player){
+		int j=0;
+		for (Field f: fields) {
+			if(f.getOwner() == player){
+				j++;
+			}
+		}
+		if (j==0) return null;
+		Field  [] ownedfields = new Field[j];
+		j=0;
+		for (Field f: fields) {
+			if(f.getOwner() == player){
+				ownedfields[j]= f;
+				j++;
+			}
+		}
+		return ownedfields;
+
+	}
 }
+

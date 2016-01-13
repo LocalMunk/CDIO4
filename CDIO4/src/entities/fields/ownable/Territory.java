@@ -68,17 +68,15 @@ public class Territory extends Ownable
 		 * owner and withdraws the price from the players account The GUI is
 		 * updated with the correct information
 		 */
-		else if (owned != true && player.getAccount().getBalance() >= price)
+		else if (owner == null && player.getAccount().getBalance() >= price)
 		{
 			if (GUI.getUserLeftButtonPressed("Do you want to buy this field", "Yes", "No"))
 			{
-				owned = true;
 				owner = player;
 				GUI.showMessage("You are the proud owner of this.");
 				//GUI isn't 0 indexed so we add 1
 				GUI.setOwner(fieldID + 1, owner.getName());
 				player.getAccount().withdraw(price);
-				player.addFieldsOwned();
 				GUI.setBalance(player.getName(), player.getAccount().getBalance());
 			}
 		}
@@ -87,7 +85,7 @@ public class Territory extends Ownable
 		 * given field and deposit it on the players account
 		 */
 
-		else if (owned && owner != player)
+		else if (owner != null && owner != player)
 		{
 			if (owner.getJailed()==false)
 			{
@@ -222,16 +220,6 @@ public class Territory extends Ownable
 	{
 		return this.groupName;
 	}
-
-	/**
-	 * Release the fields owned by a given player at his death
-	 */
-	@Override
-	public void setOwned(boolean bool)
-	{
-		// TODO Auto-generated method stub
-		owned = bool;
-	}
 	
 	public void buyBuildings(String buildingType, int numberOfBuildings, Player player)
 	{
@@ -261,5 +249,11 @@ public class Territory extends Ownable
 		System.arraycopy(a, 0, c, 0, aLen);
 		System.arraycopy(b, 0, c, aLen, bLen);
 		return c;
+	}
+
+	@Override
+	public void setOwned(boolean bool) {
+		// TODO Auto-generated method stub
+		
 	}
 }
