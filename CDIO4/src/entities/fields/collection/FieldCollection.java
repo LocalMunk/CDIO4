@@ -84,8 +84,8 @@ public class FieldCollection
 		fields[30] = new GoToJail("Go to jail", "go to jail", 30);
 
 		//Brewery
-		fields[16] = new Brewery ("Tuborg","Tuborg: Price 3000",16, 3000, 10, diceone);
-		fields[28] = new Brewery("Coca-Cola", "Coca-Cola: Price 3000", 28, 3000, 100, diceone);
+		fields[16] = new Brewery ("Tuborg","Tuborg: Price 3000",16, 3000, 10, diceone, this);
+		fields[28] = new Brewery("Coca-Cola", "Coca-Cola: Price 3000", 28, 3000, 100, diceone, this);
 
 		//Parking
 		fields[20] = new FreeParking ("Helle","Park free here",20);
@@ -120,26 +120,44 @@ public class FieldCollection
 
 	public Field[] getOwnedTerritoryBuildable(Player player)
 	{
-		Field[] fields = new Field[player.getFieldsOwned()];
+		Field[] fields = this.getOwnedFieldsOfType(new Territory(), player);
 
+		if(fields == null)
+			return null;
+		
 		int i = 0;
-
-		for(Field field : this.getFieldList())
+		for(Field field : fields)
 		{
-			Player owner = field.getOwner();
-			if(		field != null
-					&& field instanceof Territory
-					&& owner != null
-					&& owner == player)
+			if(	field != null
+					&& (((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields))
+					&& ((Territory)field).getNumberOfHotels() != ((Territory)field).getMaxNumberOfHotels()
+					)
+				i++;
+		}
+		
+		if(i == 0)
+			return null;
+		
+		Territory[] returnFields = new Territory[i];
+		
+		i = 0;
+		for(Field field : fields)
+		{
+			if(	field != null
+					&& (((Territory) field).isTerritoryBuildable((Territory)field, fields, this.fields))
+					&& ((Territory)field).getNumberOfHotels() != ((Territory)field).getMaxNumberOfHotels()
+					)
 			{
-				fields[i] = field;
+				returnFields[i] = (Territory)field;
 				i++;
 			}
 		}
-
-		if(fields[0] == null)
-			return new Field[0];
-
+		
+		return returnFields;
+		
+		/*
+		 * This is how it should be done, as it is more effective,
+		 * as you only loop over the array one time
 		ArrayList<Territory> returnFields = new ArrayList<Territory>();
 		for(Field field : fields)
 		{
@@ -152,25 +170,27 @@ public class FieldCollection
 		}
 
 		return returnFields.toArray(new Field[returnFields.size()]);
+		*/
+		
 	}
 
-	public Field[] getOwnedTerritory(Player player)
-	{
-		Field[] fields = new Field[player.getFieldsOwned()];
-		int i = 0;
-
-		for(Field field : this.getFieldList())
-		{
-			Player owner = field.getOwner();
-			if(field instanceof Territory && owner != null && owner == player) 
-			{
-				fields[i] = field;
-				i++;
-			}
-		}
-
-		return fields;
-	}
+//	public Field[] getOwnedTerritories(Player player)
+//	{
+//		Field[] fields = new Field[player.getFieldsOwned()];
+//		int i = 0;
+//
+//		for(Field field : this.getFieldList())
+//		{
+//			Player owner = field.getOwner();
+//			if(field instanceof Territory && owner != null && owner == player) 
+//			{
+//				fields[i] = field;
+//				i++;
+//			}
+//		}
+//
+//		return fields;
+//	}
 
 	public String[] getFieldNames(Field[] fields)
 	{
@@ -217,7 +237,31 @@ public class FieldCollection
 			}
 		}
 		return ownedfields;
-
+	}
+	
+	/*
+	 * This method should've used a generic type
+	 */
+	public Field[] getOwnedFieldsOfType(Object object, Player player)
+	{
+		int j=0;
+		for (Field f: fields) {
+			if(f.getClass().getName().equals(object.getClass().getName()) && f.getOwner() == player){
+				j++;
+			}
+		}
+		
+		if (j==0) return null;
+		Field  [] ownedfields = new Field[j];
+		j=0;
+		for (Field f: fields) {
+			if(f.getClass().equals(object.getClass()) && f.getOwner() == player){
+				ownedfields[j]= f;
+				j++;
+			}
+		}
+		
+		return ownedfields;
 	}
 }
 

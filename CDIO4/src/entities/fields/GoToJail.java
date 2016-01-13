@@ -28,10 +28,4 @@ public class GoToJail extends Field {
 		return null;
 	}
 
-	@Override
-	public void setOwned(boolean bool) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

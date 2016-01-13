@@ -2,6 +2,7 @@ package entities.fields.ownable;
 
 import desktop_resources.GUI;
 import entities.fields.abstracts.Ownable;
+import entities.fields.collection.FieldCollection;
 import game.Dice;
 import game.Player;
 
@@ -9,6 +10,7 @@ public class Brewery extends Ownable
 {
 	private int rate;
 	private Dice dice;
+	private FieldCollection fieldCollection;
 
 	/**
 	 * Creates a LaborCamp field
@@ -18,17 +20,18 @@ public class Brewery extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public Brewery(String name, String description, int fieldID, int price, int rate, Dice dice)
+	public Brewery(String name, String description, int fieldID, int price, int rate, Dice dice, FieldCollection fieldCollection)
 	{
 		super(name, description, fieldID, price);
 		this.rate = rate;
 		this.dice = dice;
+		this.fieldCollection = fieldCollection;
 	}
 
 	@Override
 	public int getRent()
 	{
-		return dice.roll() * rate * owner.getLaborCampsOwned(); //fix this
+		return dice.roll() * rate * fieldCollection.getOwnedFieldsOfType(this, this.owner).length;
 	}
 
 	@Override

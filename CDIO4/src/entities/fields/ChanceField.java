@@ -70,11 +70,4 @@ public class ChanceField extends Field {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public void setOwned(boolean bool) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

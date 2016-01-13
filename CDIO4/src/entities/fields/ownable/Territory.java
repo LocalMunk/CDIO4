@@ -5,6 +5,7 @@ import java.util.Properties;
 import desktop_resources.GUI;
 import entities.fields.abstracts.Field;
 import entities.fields.abstracts.Ownable;
+import game.Account;
 import game.Player;
 
 public class Territory extends Ownable
@@ -43,6 +44,12 @@ public class Territory extends Ownable
 		this.houses = 0;
 		this.hotels = 0;
 		this.groupName = groupName;
+	}
+
+	public Territory()
+	{
+		super("", "", 0, 0);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -223,19 +230,34 @@ public class Territory extends Ownable
 	
 	public void buyBuildings(String buildingType, int numberOfBuildings, Player player)
 	{
+		Account account = player.getAccount();
 		if(buildingType == "Hotel")
 		{
 			int hotelPrice = 	((this.MAX_HOUSES - this.getNumberOfHouses()) * this.HOUSE_PRICE)
 							+	(this.HOTEL_PRICE * numberOfBuildings);
 			
-			player.getAccount().withdraw(hotelPrice);
-			this.hotels = numberOfBuildings;
-			GUI.setHotel(this.fieldID+1, true);
+			if(hotelPrice >= account.getBalance())
+			{
+				GUI.showMessage("You can't afford to buy a hotel");
+			} else
+			{
+				account.withdraw(hotelPrice);
+				this.hotels = numberOfBuildings;
+				GUI.setHotel(this.fieldID+1, true);
+			}
 			
 		} else if(buildingType == "House") {
-			player.getAccount().withdraw(HOUSE_PRICE*numberOfBuildings);
-			this.houses = numberOfBuildings;
-			GUI.setHouses(this.fieldID+1, this.houses);
+			int housePrice = HOUSE_PRICE * (numberOfBuildings - houses);
+			
+			if(housePrice >= account.getBalance())
+			{
+				GUI.showMessage("You can't afford to buy a hotel");
+			} else 
+			{
+				account.withdraw(housePrice);
+				this.houses = numberOfBuildings;
+				GUI.setHouses(this.fieldID+1, this.houses);
+			}
 		}
 		
 		GUI.setBalance(player.getName(), player.getAccount().getBalance());
@@ -249,11 +271,5 @@ public class Territory extends Ownable
 		System.arraycopy(a, 0, c, 0, aLen);
 		System.arraycopy(b, 0, c, aLen, bLen);
 		return c;
-	}
-
-	@Override
-	public void setOwned(boolean bool) {
-		// TODO Auto-generated method stub
-		
 	}
 }

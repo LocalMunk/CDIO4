@@ -6,6 +6,7 @@ import desktop_resources.GUI;
 import entities.ChanceCards.ChanceCardCollection;
 import entities.fields.StartField;
 import entities.fields.abstracts.Field;
+import entities.fields.abstracts.Ownable;
 import entities.fields.collection.FieldCollection;
 import entities.fields.ownable.Territory;
 import game.Dice;
@@ -158,11 +159,10 @@ public class GameController
 			 * Code to determine if the player can buy any hotels/houses
 			 * Also allows the player to buy buildings
 			 */
-			if(player.getFieldsOwned() != 0 && player.getJailed()==false) 
+			Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+			if(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && player.getJailed()==false) 
 			{
-				Field[] ownedFields = fieldCollection.getOwnedTerritory(player);
-				Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
-				if(ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No") && ownedFields.length != 0)
+				if(ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No"))
 				{
 					String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
 					
@@ -188,26 +188,19 @@ public class GameController
 			{
 				GUI.showMessage(player.getName() + " is dead");
 				GUI.removeAllCars(player.getName());
-			}
-			if (player.getAccount().getBalance() <= 0)
-			{
 				
 				player.setAlive(false);
 				for (Field x : fieldCollection.getFieldList())
 				{
-					try
+					if (x instanceof Ownable && x.getOwner() == player)
 					{
-						if (x.getOwner().getName().equals(player.getName()))
-						{
-							x.setOwned(false);
-						}
-					}
-					catch (Exception e)
-					{
-
+						((Ownable)x).setOwner(null);
 					}
 				}
+				
+				this.amountofplayers--;
 			}
+			
 			if (this.amountofplayers == 1)
 			{
 				GUI.showMessage("You have won the game");

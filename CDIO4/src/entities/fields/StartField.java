@@ -24,12 +24,6 @@ public class StartField extends Field
 		return null;
 	}
 
-	@Override
-	public void setOwned(boolean bool)
-	{
-		// TODO Auto-generated method stub
-
-	}
 	public static void getStartMoney(Player player) {
 		player.getAccount().deposit(2000);
 		GUI.setBalance(player.getName(), player.getAccount().getBalance());

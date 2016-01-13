@@ -21,11 +21,11 @@ public class Fleet extends Ownable
 	 * @param b
 	 *            Field number (int)
 	 */
-	public Fleet(String name, String description, int fieldID, int price, int[] rent, FieldCollection fieldcollector)
+	public Fleet(String name, String description, int fieldID, int price, int[] rent, FieldCollection fieldCollection)
 	{
 		super(name, description, fieldID, price);
 		this.rent = rent;
-		this.fieldCollection = fieldcollector;
+		this.fieldCollection = fieldCollection;
 	}
 
 	@Override
@@ -124,12 +124,6 @@ public class Fleet extends Ownable
 	{
 		// TODO Auto-generated method stub
 		return owner;
-	}
-
-	@Override
-	public void setOwned(boolean bool) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

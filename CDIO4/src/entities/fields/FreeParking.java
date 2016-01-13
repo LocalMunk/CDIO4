@@ -21,11 +21,5 @@ public class FreeParking extends Field {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public void setOwned(boolean bool) {
-		// TODO Auto-generated method stub
-		
-	}
 // Super low priority: Gør så tax penge lander her
 }
