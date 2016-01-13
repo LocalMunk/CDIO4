@@ -251,7 +251,7 @@ public class Territory extends Ownable
 			
 			if(housePrice >= account.getBalance())
 			{
-				GUI.showMessage("You can't afford to buy a hotel");
+				GUI.showMessage("You can't afford to buy a house");
 			} else 
 			{
 				account.withdraw(housePrice);
