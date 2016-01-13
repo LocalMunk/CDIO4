@@ -34,4 +34,8 @@ public class Turn
 	{
 		return check;
 	}
+	
+	public void subCheck(){
+		check--;
+	}
 }
