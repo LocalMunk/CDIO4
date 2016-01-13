@@ -131,7 +131,6 @@ public class GameController
 		        .equals("ENTER"))
 				{
 					dice.roll();
-							
 					}
 				for (int i = 0; i < dice.getValue(); i++)
 				{
@@ -209,6 +208,11 @@ public class GameController
 				System.exit(0);
 			}
 		}
+		if(dice.getEquals()){
+			turn.subCheck();
+			GUI.showMessage("You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
+		}
+
 			turn.change();
 		}
 	}
