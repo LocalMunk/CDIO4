@@ -30,5 +30,10 @@ public class StartField extends Field
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void setOwner(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

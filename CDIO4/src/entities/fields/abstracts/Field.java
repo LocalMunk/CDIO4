@@ -36,4 +36,5 @@ public abstract class Field
 	{
 		return this.description;
 	}
+	public abstract void setOwner(Player player);
 }

@@ -108,7 +108,6 @@ public class Fleet extends Ownable
 	/**
 	 * Sets the owner
 	 */
-
 	public void setOwner(Player player)
 	{
 		// TODO Auto-generated method stub

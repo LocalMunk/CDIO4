@@ -28,4 +28,10 @@ public class GoToJail extends Field {
 		return null;
 	}
 
+	@Override
+	public void setOwner(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

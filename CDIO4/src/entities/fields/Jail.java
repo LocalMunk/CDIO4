@@ -20,4 +20,10 @@ public class Jail extends Field {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void setOwner(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 }
