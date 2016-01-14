@@ -161,7 +161,7 @@ public class GameController
 			Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
 			if(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && player.getJailed()==false) 
 			{
-				if(ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No"))
+				while(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No"))
 				{
 					String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
 					
@@ -179,6 +179,40 @@ public class GameController
 					int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
 					
 					chosenField.buyBuildings(buildingType, numberOfBuildings, player);
+					/*
+					 * Have to get owned territory again to check whether or they still have buildable territories
+					 */
+					ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+				}
+			}
+			
+			
+			/*
+			 * Ask the player if he wants to sell any of his buildings
+			 */
+			Field[] ownedFields = fieldCollection.getOwnedFieldsOfType(new Territory(), player);
+			if(ownedFields != null && ownedFields.length != 0)
+			{
+				while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you to sell any territories?", "Yes", "No"))
+				{
+					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
+					
+					Player buyingPlayer = getPlayerByName(GUI.getUserSelection("Choose a player to sell to", getPlayerNamesExcept(player)));
+					
+					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+					
+					int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?");
+					
+					chosenField.setOwner(buyingPlayer);
+					buyingPlayer.getAccount().withdraw(price);
+					GUI.setBalance(buyingPlayer.getName(), buyingPlayer.getAccount().getBalance());
+					player.getAccount().deposit(price);
+					GUI.setBalance(player.getName(), player.getAccount().getBalance());
+					
+					/*
+					 * Have to get owned territory again to check whether or they still have fields to sell
+					 */
+					ownedFields = fieldCollection.getOwnedFieldsOfType(new Territory(), player);
 				}
 			}
 			
@@ -213,8 +247,54 @@ public class GameController
 			GUI.showMessage("You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
 		}
 
-			turn.change();
+		turn.change();
+	}
+	
+	public String[] getPlayerNames()
+	{
+		String[] playerNames = new String[players.length];
+		
+		int i = 0;
+		for(Player player : players)
+		{
+			playerNames[i] = player.getName();
+			i++;
 		}
+		
+		return playerNames;
+	}
+	
+	public String[] getPlayerNamesExcept(Player player)
+	{
+		String exceptPlayerName = player.getName();
+		String[] allPlayerNames = getPlayerNames();
+		String[] playerNamesExceptPlayer = new String[allPlayerNames.length - 1];
+		
+		int i = 0;
+		for(String playerName : allPlayerNames)
+		{
+			if(!playerName.equals(exceptPlayerName))
+			{
+				playerNamesExceptPlayer[i] = playerName;
+				i++;
+			}
+		}
+		
+		return playerNamesExceptPlayer;
+	}
+	
+	
+	public Player getPlayerByName(String name)
+	{
+		for(Player player : players)
+		{
+			if(player.getName() == name)
+				return player;
+		}
+		
+		return null;
+	}
+	
 	}
 //	public String draw (Player player){
 //		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
