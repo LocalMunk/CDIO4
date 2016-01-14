@@ -193,7 +193,7 @@ public class GameController
 			Field[] ownedFields = fieldCollection.getOwnedFieldsOfType(new Territory(), player);
 			if(ownedFields != null && ownedFields.length != 0)
 			{
-				while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you to sell any territories?", "Yes", "No"))
+				while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you want to sell any territories?", "Yes", "No"))
 				{
 					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
 					
@@ -201,7 +201,8 @@ public class GameController
 					
 					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
 					
-					int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?");
+					int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?", 0, buyingPlayer.getAccount().getBalance() - 1);
+
 					
 					chosenField.setOwner(buyingPlayer);
 					buyingPlayer.getAccount().withdraw(price);
