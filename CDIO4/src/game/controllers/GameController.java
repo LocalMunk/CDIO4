@@ -190,7 +190,7 @@ public class GameController
 			/*
 			 * Ask the player if he wants to sell any of his buildings
 			 */
-			Field[] ownedFields = fieldCollection.getOwnedFieldsOfType(new Territory(), player);
+			Field[] ownedFields = fieldCollection.getOwnedFields(player);
 			if(ownedFields != null && ownedFields.length != 0)
 			{
 				while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you want to sell any territories?", "Yes", "No"))
@@ -213,7 +213,7 @@ public class GameController
 					/*
 					 * Have to get owned territory again to check whether or they still have fields to sell
 					 */
-					ownedFields = fieldCollection.getOwnedFieldsOfType(new Territory(), player);
+					ownedFields = fieldCollection.getOwnedFields(player);
 				}
 			}
 			
