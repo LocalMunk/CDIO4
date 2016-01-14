@@ -7,6 +7,7 @@ public class Player
 	private int position;
 	private boolean alive;
 	private boolean jailed;
+	private int timeJailed;
 
 	public Player(String x, int a)
 	{
@@ -15,6 +16,8 @@ public class Player
 		position = 0;
 		alive = true;
 		jailed = false;
+		timeJailed = 0;
+		
 	}
 
 	public String getName()
@@ -52,5 +55,13 @@ public class Player
 	}
 	public void setJailed(boolean jailed) {
 		this.jailed = jailed;
+	}
+	
+	public int getTimeJailed(){
+		return timeJailed;
+	}
+	
+	public void setTimeJailed(int timeJailed){
+		this.timeJailed = timeJailed;
 	}
 }
