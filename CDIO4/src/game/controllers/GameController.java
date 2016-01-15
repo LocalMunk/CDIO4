@@ -213,7 +213,7 @@ public class GameController
 					
 					Player buyingPlayer = getPlayerByName(GUI.getUserSelection("Choose a player to sell to", getPlayerNamesExcept(player)));
 					
-					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+					Ownable chosenField = (Ownable) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
 					
 					int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?", 0, buyingPlayer.getAccount().getBalance() - 1);
 
@@ -223,6 +223,7 @@ public class GameController
 					GUI.setBalance(buyingPlayer.getName(), buyingPlayer.getAccount().getBalance());
 					player.getAccount().deposit(price);
 					GUI.setBalance(player.getName(), player.getAccount().getBalance());
+					GUI.setOwner(chosenField.getFieldID(), buyingPlayer.getName());
 					
 					/*
 					 * Have to get owned territory again to check whether or they still have fields to sell
