@@ -22,7 +22,7 @@ public class Territory extends Ownable
 	
 	private final int HOUSE_PRICE = 500;
 	private final int HOTEL_PRICE = 2000;
-	
+		
 	
 
 	/**
@@ -94,7 +94,7 @@ public class Territory extends Ownable
 
 		else if (owner != null && owner != player)
 		{
-			if (owner.getJailed()==false)
+			if (owner.getJailed()== false)
 			{
 			owner.getAccount().deposit(player.getAccount().withdraw(getRent()));
 			GUI.setBalance(player.getName(), player.getAccount().getBalance());
@@ -272,4 +272,5 @@ public class Territory extends Ownable
 		System.arraycopy(b, 0, c, aLen, bLen);
 		return c;
 	}
+
 }

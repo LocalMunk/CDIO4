@@ -87,17 +87,4 @@ public class Tax extends Field
 	{
 		this.taxRate = taxRate;
 	}
-
-	@Override
-	public Player getOwner()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setOwner(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 }

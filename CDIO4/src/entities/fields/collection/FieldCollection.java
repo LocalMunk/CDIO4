@@ -207,13 +207,13 @@ public class FieldCollection
 
 	public int getAmountFleetsOwned(Player player){
 		int out = 0;
-		if(fields[5].getOwner() == player)
+		if(((Ownable)fields[5]).getOwner() == player)
 			out++;
-		if(fields[14].getOwner() == player)
+		if(((Ownable)fields[14]).getOwner() == player)
 			out++;	
-		if(fields[25].getOwner() == player)
+		if(((Ownable)fields[25]).getOwner() == player)
 			out++;		
-		if(fields[34].getOwner() == player)
+		if(((Ownable)fields[34]).getOwner() == player)
 			out++;		
 		return out;
 	}
@@ -222,7 +222,7 @@ public class FieldCollection
 	public Field[] getOwnedFields(Player player){
 		int j=0;
 		for (Field f: fields) {
-			if(f.getOwner() == player){
+			if(((Ownable)f).getOwner() == player){
 				j++;
 			}
 		}
@@ -230,7 +230,7 @@ public class FieldCollection
 		Field  [] ownedfields = new Field[j];
 		j=0;
 		for (Field f: fields) {
-			if(f.getOwner() == player){
+			if(((Ownable)f).getOwner() == player){
 				ownedfields[j]= f;
 				j++;
 			}
@@ -245,7 +245,7 @@ public class FieldCollection
 	{
 		int j=0;
 		for (Field f: fields) {
-			if(f.getClass().getName().equals(object.getClass().getName()) && f.getOwner() == player){
+			if(f.getClass().getName().equals(object.getClass().getName()) && ((Ownable)f).getOwner() == player){
 				j++;
 			}
 		}
@@ -254,7 +254,7 @@ public class FieldCollection
 		Field  [] ownedfields = new Field[j];
 		j=0;
 		for (Field f: fields) {
-			if(f.getClass().equals(object.getClass()) && f.getOwner() == player){
+			if(f.getClass().equals(object.getClass()) && ((Ownable)f).getOwner() == player){
 				ownedfields[j]= f;
 				j++;
 			}
@@ -267,7 +267,7 @@ public class FieldCollection
 	{
 		for (Field x : getFieldList())
 		{
-			if (x instanceof Ownable && x.getOwner() == player)
+			if (x instanceof Ownable && ((Ownable)x).getOwner() == player)
 			{
 				((Ownable)x).setOwner(null);
 			}

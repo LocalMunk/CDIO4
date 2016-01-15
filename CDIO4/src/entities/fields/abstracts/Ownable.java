@@ -18,5 +18,6 @@ public abstract class Ownable extends Field
 	public abstract int getPrice();
 
 	public abstract void setOwner(Player player);
-
+	
+	public abstract Player getOwner();
 }

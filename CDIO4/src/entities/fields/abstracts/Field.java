@@ -25,8 +25,6 @@ public abstract class Field
 	 */
 	public abstract void landOnField(Player player);
 
-	public abstract Player getOwner();
-	
 	public String getName()
 	{
 		return this.name;
@@ -36,7 +34,6 @@ public abstract class Field
 	{
 		return this.description;
 	}
-	public abstract void setOwner(Player player);
 	
 	public int getFieldID()
 	{

@@ -43,37 +43,4 @@ public class ChanceField extends Field {
 			
 	}
 
-	// TODO Auto-generated method stub
-	// if (GUI.getUserLeftButtonPressed("Draw a card", "Yes", null)){
-	// int rnd = new Random().nextInt(description.length);
-	// GUI.setChanceCard(description[rnd]);
-	// switch (rnd) {
-	// case 0 : player.getAccount().deposit(lottery[0]);
-	// break;
-	// case 1 : player.getAccount().deposit(lottery[1]);
-	// break;
-	// case 2 : player.getAccount().withdraw(lottery[2]);
-	// break;
-	// case 3 : player.getAccount().withdraw(lottery[3]);
-	// break;
-	//
-	// }
-	// System.out.println(rnd);
-	// GUI.setBalance(player.getName(), player.getAccount().getBalance());
-	// System.out.println(player.getAccount().getBalance());
-	// GUI.displayChanceCard();
-	// }
-	//
-
-	@Override
-	public Player getOwner() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setOwner(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 }
