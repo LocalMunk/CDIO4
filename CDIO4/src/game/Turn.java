@@ -35,7 +35,7 @@ public class Turn
 		return check;
 	}
 	
-	public void subCheck(){
+	public void extraTurnToCurrentPlayer(){
 		check--;
 	}
 }
