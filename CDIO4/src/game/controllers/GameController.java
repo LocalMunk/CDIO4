@@ -223,7 +223,7 @@ public class GameController
 					GUI.setBalance(buyingPlayer.getName(), buyingPlayer.getAccount().getBalance());
 					player.getAccount().deposit(price);
 					GUI.setBalance(player.getName(), player.getAccount().getBalance());
-					GUI.setOwner(chosenField.getFieldID(), buyingPlayer.getName());
+					GUI.setOwner(chosenField.getFieldID() + 1, buyingPlayer.getName());
 					
 					/*
 					 * Have to get owned territory again to check whether or they still have fields to sell
