@@ -1,4 +1,4 @@
-package game.controllers.marketplace;
+package game.controllers;
 
 import desktop_resources.GUI;
 import entities.fields.abstracts.Field;
