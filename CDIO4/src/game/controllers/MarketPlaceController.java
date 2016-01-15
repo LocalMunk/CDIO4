@@ -21,28 +21,35 @@ public class MarketPlaceController
 		{
 			while(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No"))
 			{
-				String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
-				
-				//Get the field that the player selects
-				Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
-				
-				String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
-				String buildingType;
-				
-				if(choice.startsWith("Hotel: "))
-					buildingType = "Hotel";
-				else
-					buildingType = "House";
-				
-				int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
-				
-				chosenField.buyBuildings(buildingType, numberOfBuildings, player);
-				/*
-				 * Have to get owned territory again to check whether or they still have buildable territories
-				 */
-				ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+				ownedFieldBuildable = offerPlayerToBuyHouses(player, fieldCollection, ownedFieldBuildable);
 			}
 		}
+	}
+
+
+	private Field[] offerPlayerToBuyHouses(Player player, FieldCollection fieldCollection,
+			Field[] ownedFieldBuildable) {
+		String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
+		
+		//Get the field that the player selects
+		Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
+		
+		String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
+		String buildingType;
+		
+		if(choice.startsWith("Hotel: "))
+			buildingType = "Hotel";
+		else
+			buildingType = "House";
+		
+		int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
+		
+		chosenField.buyBuildings(buildingType, numberOfBuildings, player);
+		/*
+		 * Have to get owned territory again to check whether or they still have buildable territories
+		 */
+		ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+		return ownedFieldBuildable;
 	}
 	
 	

@@ -57,7 +57,7 @@ public class GameController
 		this.players = new Player[amountofplayers];
 
 		Color[] playerColors = new Color[] { Color.blue, Color.red, Color.yellow, Color.green, Color.white,
-		        Color.black };
+				Color.black };
 
 		for (int i = 0; i < amountofplayers; i++)
 		{
@@ -111,37 +111,14 @@ public class GameController
 	{
 		if (player.isAlive())
 		{
+			//Check if player is in jail
 			if (player.getJailed())
 			{
-				jail.handle(player, dice);
+				jail.handle(player, dice); //Do jail turn
 			}
 			else
 			{
-				if (GUI.getUserButtonPressed(player.getName() + "'s turn, Press ENTER to roll the dice", "ENTER")
-				        .equals("ENTER"))
-				{
-					dice.roll();
-				}
-				for (int i = 0; i < dice.getValue(); i++)
-				{
-					if (player.getPosition() < 39)
-					{
-						GUI.removeAllCars(player.getName());
-						player.setPosition(player.getPosition() + 1);
-						// GUI isn't 0 indexed so we add 1
-						GUI.setCar(player.getPosition() + 1, player.getName());
-					}
-					else
-					{
-						GUI.removeAllCars(player.getName());
-						player.setPosition(0);
-						// GUI isn't 0 indexed so we add 1
-						GUI.setCar(player.getPosition() + 1, player.getName());
-						StartField.getStartMoney(player);
-					}
-				}
-
-				fieldCollection.getField(player.getPosition()).landOnField(player);
+				playerTurn(player); //Do normal turn
 			}
 
 			marketPlace.buyBuildings(player, fieldCollection);
@@ -149,42 +126,17 @@ public class GameController
 
 			if (player.getAccount().getBalance() == 0)
 			{
-				GUI.showMessage(player.getName() + " is dead");
-				GUI.removeAllCars(player.getName());
-
-				player.setAlive(false);
-				fieldCollection.removePlayerOwnership(player);
-
-				this.amountofplayers--;
+				goBroke(player);
 			}
-
+			//Check if there is only one player left
 			if (this.amountofplayers == 1)
 			{
-				GUI.showMessage("You have won the game");
-				GUI.showMessage("Press enter to close the game");
-				GUI.close();
-				System.exit(0);
+				gameOver();
 			}
 		}
 		if (dice.getEquals())
 		{
-			equaldicecounter++;
-			if (equaldicecounter == 3)
-			{
-				player.setJailed(true);
-				GUI.removeAllCars(player.getName());
-				player.setPosition(10);
-				// GUI isn't 0 indexed so we add 1
-				GUI.setCar(player.getPosition() + 1, player.getName());
-				GUI.showMessage("You rolled two equal dice 3 times in a row. Go to jail.");
-				equaldicecounter = 0;
-			}
-			else
-			{
-				turn.subCheck();
-				GUI.showMessage(
-				        "You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
-			}
+			checkForTooManySameDice(player);
 		}
 		else
 		{
@@ -193,15 +145,69 @@ public class GameController
 		turn.change();
 	}
 
+	private void checkForTooManySameDice(Player player) {
+		equaldicecounter++;
+		if (equaldicecounter == 3)
+		{
+			player.setJailed(true);
+			GUI.removeAllCars(player.getName());
+			player.setPosition(10);
+			// GUI isn't 0 indexed so we add 1
+			GUI.setCar(player.getPosition() + 1, player.getName());
+			GUI.showMessage("You rolled two equal dice 3 times in a row. Go to jail.");
+			equaldicecounter = 0;
+		}
+		else
+		{
+			turn.subCheck();
+			GUI.showMessage(
+					"You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
+		}
+	}
+
+	private void gameOver() {
+		GUI.showMessage("You have won the game");
+		GUI.showMessage("Press enter to close the game");
+		GUI.close();
+		System.exit(0);
+	}
+
+	private void goBroke(Player player) {
+		GUI.showMessage(player.getName() + " is dead");
+		GUI.removeAllCars(player.getName());
+
+		player.setAlive(false);
+		fieldCollection.removePlayerOwnership(player);
+
+		this.amountofplayers--;
+	}
+
+	private void playerTurn(Player player) {
+		if (GUI.getUserButtonPressed(player.getName() + "'s turn, Press ENTER to roll the dice", "ENTER")
+				.equals("ENTER"))
+		{
+			dice.roll();
+		}
+		for (int i = 0; i < dice.getValue(); i++)
+		{
+			if (player.getPosition() < 39)
+			{
+				GUI.removeAllCars(player.getName());
+				player.setPosition(player.getPosition() + 1);
+				// GUI isn't 0 indexed so we add 1
+				GUI.setCar(player.getPosition() + 1, player.getName());
+			}
+			else
+			{
+				GUI.removeAllCars(player.getName());
+				player.setPosition(0);
+				// GUI isn't 0 indexed so we add 1
+				GUI.setCar(player.getPosition() + 1, player.getName());
+				StartField.getStartMoney(player);
+			}
+		}
+
+		fieldCollection.getField(player.getPosition()).landOnField(player);
+	}
+
 }
-// public String draw (Player player){
-// int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
-// if (rnd <= 4){
-// player.getAccount().deposit(chanceCardCollection.getCardList()[rnd].getValue());
-// }
-// else {
-// player.getAccount().withdraw(chanceCardCollection.getCardList()[rnd].getValue());
-// }
-// GUI.displayChanceCard(chanceCardCollection.getCardList()[rnd].getDescription());
-// return chanceCardCollection.getCardList()[rnd].getDescription();
-// }
