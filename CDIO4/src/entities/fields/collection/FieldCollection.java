@@ -222,7 +222,7 @@ public class FieldCollection
 	public Field[] getOwnedFields(Player player){
 		int j=0;
 		for (Field f: fields) {
-			if(((Ownable)f).getOwner() == player){
+			if(f instanceof Ownable && ((Ownable)f).getOwner() == player){
 				j++;
 			}
 		}
@@ -230,7 +230,7 @@ public class FieldCollection
 		Field  [] ownedfields = new Field[j];
 		j=0;
 		for (Field f: fields) {
-			if(((Ownable)f).getOwner() == player){
+			if(f instanceof Ownable && ((Ownable)f).getOwner() == player){
 				ownedfields[j]= f;
 				j++;
 			}

@@ -134,7 +134,6 @@ public class GameController
 				gameOver();
 			}
 		}
-		
 		if (dice.getEquals())
 		{
 			checkForTooManySameDice(player);
@@ -143,7 +142,6 @@ public class GameController
 		{
 			equaldicecounter = 0;
 		}
-		
 		turn.change();
 	}
 
@@ -151,18 +149,14 @@ public class GameController
 		equaldicecounter++;
 		if (equaldicecounter == 3)
 		{
-			player.setJailed(true);
-			GUI.removeAllCars(player.getName());
-			player.setPosition(10);
-			// GUI isn't 0 indexed so we add 1
-			GUI.setCar(player.getPosition() + 1, player.getName());
-			GUI.showMessage("You rolled two equal dice 3 times in a row. Go to jail.");
+			jail.goToJail(player);
 			equaldicecounter = 0;
 		}
 		else
 		{
 			turn.extraTurnToCurrentPlayer();
-			GUI.showMessage("You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
+			GUI.showMessage(
+					"You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
 		}
 	}
 
@@ -193,17 +187,18 @@ public class GameController
 		{
 			if (player.getPosition() < 39)
 			{
-				jail.goToJail(player);
-				equaldicecounter = 0;
-			}
-			else
-			{
-				turn.extraTurnToCurrentPlayer();
-				GUI.showMessage("You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
 				GUI.removeAllCars(player.getName());
 				player.setPosition(player.getPosition() + 1);
 				// GUI isn't 0 indexed so we add 1
 				GUI.setCar(player.getPosition() + 1, player.getName());
+			}
+			else
+			{
+				GUI.removeAllCars(player.getName());
+				player.setPosition(0);
+				// GUI isn't 0 indexed so we add 1
+				GUI.setCar(player.getPosition() + 1, player.getName());
+				StartField.getStartMoney(player);
 			}
 		}
 
