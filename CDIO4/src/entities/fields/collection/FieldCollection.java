@@ -10,6 +10,7 @@ import entities.fields.Jail;
 import entities.fields.StartField;
 import entities.fields.Tax;
 import entities.fields.abstracts.Field;
+import entities.fields.abstracts.Ownable;
 import entities.fields.ownable.Brewery;
 import entities.fields.ownable.Fleet;
 import entities.fields.ownable.Territory;
@@ -260,6 +261,17 @@ public class FieldCollection
 		}
 		
 		return ownedfields;
+	}
+	
+	public void removePlayerOwnership(Player player)
+	{
+		for (Field x : getFieldList())
+		{
+			if (x instanceof Ownable && x.getOwner() == player)
+			{
+				((Ownable)x).setOwner(null);
+			}
+		}
 	}
 }
 
