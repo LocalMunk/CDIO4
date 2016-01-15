@@ -23,6 +23,7 @@ public class GameController
 //	private ChanceCardCollection chanceCardCollection;
 	private String y;
 	private int amountofplayers;
+	private int equaldicecounter;
 	
 	private boolean checkName(String name)
 	{
@@ -257,8 +258,23 @@ public class GameController
 			}
 		}
 		if(dice.getEquals()){
+			equaldicecounter++;
+			if(equaldicecounter==3){
+				player.setJailed(true);
+				GUI.removeAllCars(player.getName());
+				player.setPosition(10);
+				//GUI isn't 0 indexed so we add 1
+				GUI.setCar(player.getPosition()+1, player.getName());
+				GUI.showMessage("You rolled two equal dice 3 times in a row. Go to jail.");
+				equaldicecounter = 0;
+			}
+			else{
 			turn.subCheck();
 			GUI.showMessage("You rolled two equal dice, and your grandmother gave you the dice back, you get an extra turn!");
+			}
+		}
+		else{
+			equaldicecounter = 0;
 		}
 
 		turn.change();
