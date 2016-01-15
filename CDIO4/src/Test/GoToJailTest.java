@@ -19,7 +19,7 @@ public class GoToJailTest {
 	public void setUp() throws Exception {
 		this.fields = new FieldCollection();
 
-		fields.initialize();
+//		fields.initialize();
 
 		this.Rasmus = new Player("Rasmus", 39475);
 

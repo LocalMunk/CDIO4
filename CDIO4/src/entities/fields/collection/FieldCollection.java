@@ -26,7 +26,7 @@ public class FieldCollection
 	 * builds the gameboard, the first part builds the GUI board, and the second
 	 * builds the code board.
 	 */
-	public Field[] initialize()
+	public FieldCollection()
 	{
 		Dice diceone = new Dice(6);
 
@@ -92,8 +92,6 @@ public class FieldCollection
 
 		//Initialize the GUI
 		GameBoard.initializeGUI(fields);
-
-		return this.fields;
 	}
 
 

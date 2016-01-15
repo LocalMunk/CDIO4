@@ -22,7 +22,7 @@ public class PlayerJailed {
 	@Before
 	public void setUp() throws Exception {
 		fields = new FieldCollection();
-		fields.initialize();
+//		fields.initialize();
 		this.Rasmus = new Player("Rasmus", 20000);
 		this.Bob = new Player("Bob", 20000);
 		GUI.addPlayer("Rasmus", 20000);

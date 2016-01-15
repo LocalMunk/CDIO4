@@ -23,7 +23,7 @@ public class LandOnFieldFleet
 	{
 		
 		this.p2 = new Player("Bob", 5000);
-		fieldCollection.initialize();
+//		fieldCollection.initialize();
 	}
 	
 	@After

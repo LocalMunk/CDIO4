@@ -14,6 +14,7 @@ import entities.fields.ownable.Territory;
 import game.Dice;
 import game.Player;
 import game.Turn;
+import game.controllers.marketplace.MarketPlaceController;
 
 public class GameController
 {
@@ -22,7 +23,7 @@ public class GameController
 	private Dice dice;
 	private Turn turn;
 	private FieldCollection fieldCollection;
-//	private ChanceCardCollection chanceCardCollection;
+	private MarketPlaceController marketPlace;
 	private String y;
 	private int amountofplayers;
 	private int equaldicecounter;
@@ -47,7 +48,7 @@ public class GameController
 	public GameController()
 	{
 		fieldCollection = new FieldCollection();
-		fieldCollection.initialize();
+		marketPlace = new MarketPlaceController();
 //		chanceCardCollection = new ChanceCardCollection();
 		
 		this.amountofplayers = 0;
@@ -80,12 +81,12 @@ public class GameController
 			
 			this.players[i] = new Player(name, 30000);
 			GUI.addPlayer(
-					this.players[i].getName(),
+					name,
 					30000,
 					new Car.Builder().primaryColor(playerColors[i]).build()
 			);
 			
-			GUI.setCar(1, this.players[i].getName());
+			GUI.setCar(1, name);
 		}
 
 		turn = new Turn(this);
@@ -159,114 +160,55 @@ public class GameController
 		}
 		else{
 			if (GUI.getUserButtonPressed(player.getName() + "'s turn, Press ENTER to roll the dice", "ENTER")
-		        .equals("ENTER"))
-				{
-					dice.roll();
-					}
-				for (int i = 0; i < dice.getValue(); i++)
-				{
-					if (player.getPosition() < 39)
-					{
-						GUI.removeAllCars(player.getName());
-						player.setPosition(player.getPosition() + 1);
-						//GUI isn't 0 indexed so we add 1
-						GUI.setCar(player.getPosition() + 1, player.getName());
-					}
-					else
-					{
-						GUI.removeAllCars(player.getName());
-						player.setPosition(0);
-						//GUI isn't 0 indexed so we add 1
-						GUI.setCar(player.getPosition() + 1, player.getName());
-						StartField.getStartMoney(player);
-					}
-				}
-			
-			fieldCollection.getField(player.getPosition()).landOnField(player);
-			 }
-			
-			/*
-			 * Code to determine if the player can buy any hotels/houses
-			 * Also allows the player to buy buildings
-			 */
-			Field[] ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
-			if(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && player.getJailed()==false) 
+	        .equals("ENTER"))
 			{
-				while(ownedFieldBuildable != null && ownedFieldBuildable.length != 0 && GUI.getUserLeftButtonPressed("Do you wish to buy any houses/hotels?", "Yes", "No"))
+				dice.roll();
+			}
+			for (int i = 0; i < dice.getValue(); i++)
+			{
+				if (player.getPosition() < 39)
 				{
-					String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
-					
-					//Get the field that the player selects
-					Territory chosenField = (Territory) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
-					
-					String choice = GUI.getUserSelection("What do you wish to build on this property?", chosenField.getPossibleBuildings());
-					String buildingType;
-					
-					if(choice.startsWith("Hotel: "))
-						buildingType = "Hotel";
-					else
-						buildingType = "House";
-					
-					int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
-					
-					chosenField.buyBuildings(buildingType, numberOfBuildings, player);
-					/*
-					 * Have to get owned territory again to check whether or they still have buildable territories
-					 */
-					ownedFieldBuildable = fieldCollection.getOwnedTerritoryBuildable(player);
+					GUI.removeAllCars(player.getName());
+					player.setPosition(player.getPosition() + 1);
+					//GUI isn't 0 indexed so we add 1
+					GUI.setCar(player.getPosition() + 1, player.getName());
+				}
+				else
+				{
+					GUI.removeAllCars(player.getName());
+					player.setPosition(0);
+					//GUI isn't 0 indexed so we add 1
+					GUI.setCar(player.getPosition() + 1, player.getName());
+					StartField.getStartMoney(player);
 				}
 			}
+		
+		fieldCollection.getField(player.getPosition()).landOnField(player);
+		 }
 			
-			
-			/*
-			 * Ask the player if he wants to sell any of his buildings
-			 */
-			Field[] ownedFields = fieldCollection.getOwnedFields(player);
-			if(ownedFields != null && ownedFields.length != 0)
-			{
-				while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you want to sell any territories?", "Yes", "No"))
-				{
-					String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
-					
-					Player buyingPlayer = getPlayerByName(GUI.getUserSelection("Choose a player to sell to", getPlayerNamesExcept(player)));
-					
-					Ownable chosenField = (Ownable) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
-					
-					int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?", 0, buyingPlayer.getAccount().getBalance() - 1);
 
-					
-					chosenField.setOwner(buyingPlayer);
-					buyingPlayer.getAccount().withdraw(price);
-					GUI.setBalance(buyingPlayer.getName(), buyingPlayer.getAccount().getBalance());
-					player.getAccount().deposit(price);
-					GUI.setBalance(player.getName(), player.getAccount().getBalance());
-					GUI.setOwner(chosenField.getFieldID() + 1, buyingPlayer.getName());
-					
-					/*
-					 * Have to get owned territory again to check whether or they still have fields to sell
-					 */
-					ownedFields = fieldCollection.getOwnedFields(player);
+		marketPlace.buyBuildings(player, fieldCollection);
+		marketPlace.sellOwnedFields(player, players, fieldCollection);
+			
+			
+			
+		if (player.getAccount().getBalance() == 0)
+		{
+			GUI.showMessage(player.getName() + " is dead");
+			GUI.removeAllCars(player.getName());
+			
+			player.setAlive(false);
+			for (Field x : fieldCollection.getFieldList())
+			{
+				if (x instanceof Ownable && x.getOwner() == player)
+				{
+					((Ownable)x).setOwner(null);
 				}
 			}
 			
-			
-			if (player.getAccount().getBalance() == 0)
-			{
-				GUI.showMessage(player.getName() + " is dead");
-				GUI.removeAllCars(player.getName());
-				
-				player.setAlive(false);
-				for (Field x : fieldCollection.getFieldList())
-				{
-					if (x instanceof Ownable && x.getOwner() == player)
-					{
-						((Ownable)x).setOwner(null);
-					}
-				}
-				
 				this.amountofplayers--;
 			}
-			
+				
 			if (this.amountofplayers == 1)
 			{
 				GUI.showMessage("You have won the game");
@@ -294,56 +236,10 @@ public class GameController
 		else{
 			equaldicecounter = 0;
 		}
-
 		turn.change();
 	}
 	
-	public String[] getPlayerNames()
-	{
-		String[] playerNames = new String[players.length];
-		
-		int i = 0;
-		for(Player player : players)
-		{
-			playerNames[i] = player.getName();
-			i++;
-		}
-		
-		return playerNames;
-	}
-	
-	public String[] getPlayerNamesExcept(Player player)
-	{
-		String exceptPlayerName = player.getName();
-		String[] allPlayerNames = getPlayerNames();
-		String[] playerNamesExceptPlayer = new String[allPlayerNames.length - 1];
-		
-		int i = 0;
-		for(String playerName : allPlayerNames)
-		{
-			if(!playerName.equals(exceptPlayerName))
-			{
-				playerNamesExceptPlayer[i] = playerName;
-				i++;
-			}
-		}
-		
-		return playerNamesExceptPlayer;
-	}
-	
-	
-	public Player getPlayerByName(String name)
-	{
-		for(Player player : players)
-		{
-			if(player.getName() == name)
-				return player;
-		}
-		
-		return null;
-	}
-	
-	}
+}
 //	public String draw (Player player){
 //		int rnd = new Random().nextInt(chanceCardCollection.getCardList().length);
 //		if (rnd <= 4){
