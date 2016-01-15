@@ -16,16 +16,4 @@ public class FreeParking extends Field {
 		
 	}
 
-	@Override
-	public Player getOwner() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-// Super low priority: Gør så tax penge lander her
-
-	@Override
-	public void setOwner(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 }
