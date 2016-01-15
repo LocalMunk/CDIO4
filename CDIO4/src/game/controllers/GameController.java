@@ -1,7 +1,9 @@
 package game.controllers;
 
+import java.awt.Color;
 import java.util.Random;
 
+import desktop_codebehind.Car;
 import desktop_resources.GUI;
 import entities.ChanceCards.ChanceCardCollection;
 import entities.fields.StartField;
@@ -51,6 +53,16 @@ public class GameController
 		this.amountofplayers = 0;
 		amountofplayers = GUI.getUserInteger("How many players(2-6 players)", 2, 6);
 		this.players = new Player[amountofplayers];
+		
+		Color[] playerColors = new Color[] {
+				Color.blue,
+				Color.red,
+				Color.yellow,
+				Color.green,
+				Color.white,
+				Color.black
+		};
+		
 		for (int i = 0; i < amountofplayers; i++)
 		{
 			boolean doContinue = true;
@@ -67,7 +79,12 @@ public class GameController
 			} while(doContinue);
 			
 			this.players[i] = new Player(name, 30000);
-			GUI.addPlayer(this.players[i].getName(), 30000);
+			GUI.addPlayer(
+					this.players[i].getName(),
+					30000,
+					new Car.Builder().primaryColor(playerColors[i]).build()
+			);
+			
 			GUI.setCar(1, this.players[i].getName());
 		}
 
