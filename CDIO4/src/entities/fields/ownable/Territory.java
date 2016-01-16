@@ -69,7 +69,7 @@ public class Territory extends Ownable
 		}
 
 		/**
-		 * If the field is not owned, the player is asked wether he wants to buy
+		 * If the field is not owned, the player is asked whether he wants to buy
 		 * the field or not It then checks the player's balance to see if there
 		 * is sufficient money If the player buys the field he is set as the
 		 * owner and withdraws the price from the players account The GUI is
@@ -106,7 +106,7 @@ public class Territory extends Ownable
 		}
 
 		/**
-		 * If the players balance is too low,when buying a field - the GUI shows
+		 * If the players balance is too low, when buying a field - the GUI shows
 		 * a message
 		 */
 		else if (price > player.getAccount().getBalance())
@@ -243,6 +243,7 @@ public class Territory extends Ownable
 			{
 				account.withdraw(hotelPrice);
 				this.hotels = numberOfBuildings;
+				this.houses = 4; 
 				GUI.setHotel(this.fieldID+1, true);
 			}
 			
