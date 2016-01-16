@@ -37,14 +37,17 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testLandOnTerritoryNoMoney() {
+	public void testLandOnTerritoryNoMoney() { // Test that you do not get the
+												// option to buy a Territory
+												// when your balance is lower
+												// than its price
 		Sara = new Player("Sara", 1000);
 		fields.getField(6).landOnField(Sara);
 		Assert.assertEquals(null, ((Territory) fields.getField(6)).getOwner());
 	}
 
 	@Test
-	public void testBuyTerritoryField() {
+	public void testBuyTerritoryField() { // Test that you can buy a Territory
 		((Territory) fields.getFieldByName("Rådhuspladsen")).landOnField(Seb);
 		Assert.assertEquals(Seb, ((Territory) fields.getFieldByName("Rådhuspladsen")).getOwner());
 		Assert.assertEquals(22000, Seb.getAccount().getBalance());
@@ -52,14 +55,17 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testPayRent() {
+	public void testPayRent() { // Test that when a Territory is owned by
+								// another player rent is paid. (1000 for field
+								// 39)
 		((Territory) fields.getField(39)).setOwner(Seb);
 		((Territory) fields.getField(39)).landOnField(Sara);
 		Assert.assertEquals(29000, Sara.getAccount().getBalance());
 	}
 
 	@Test
-	public void testLandOnFieldOwnerJailed() {
+	public void testLandOnFieldOwnerJailed() { // Test that no rent is paid if
+												// owner is jailed
 		((Territory) fields.getField(39)).setOwner(Seb);
 		Seb.setJailed(true);
 		((Territory) fields.getField(39)).landOnField(Sara);
@@ -69,7 +75,10 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testBuyHouse() {
+	public void testBuyHouse() { // That the if you own all associated
+									// Territories that you can buy a house
+									// (price = 500) and that the rent is
+									// increased.
 		((Territory) fields.getField(1)).setOwner(Seb);
 		((Territory) fields.getField(3)).setOwner(Seb);
 		((Territory) fields.getField(3)).buyBuildings("House", 1, Seb);
@@ -81,7 +90,10 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testBuy2Houses() {
+	public void testBuy2Houses() { // That the if you own all associated
+									// Territories that you can buy 2 houses
+									// (price = 1000) and that the rent is
+									// increased.
 		((Territory) fields.getField(1)).setOwner(Seb);
 		((Territory) fields.getField(3)).setOwner(Seb);
 		((Territory) fields.getField(3)).buyBuildings("House", 2, Seb);
@@ -92,7 +104,10 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testBuy3Houses() {
+	public void testBuy3Houses() { // That the if you own all associated
+									// Territories that you can buy 3 houses
+									// (price = 1500) and that the rent is
+									// increased.
 		((Territory) fields.getField(1)).setOwner(Seb);
 		((Territory) fields.getField(3)).setOwner(Seb);
 		((Territory) fields.getField(3)).buyBuildings("House", 3, Seb);
@@ -103,7 +118,10 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testBuy4Houses() {
+	public void testBuy4Houses() { // That the if you own all associated
+									// Territories that you can buy 4 houses
+									// (price = 2000) and that the rent is
+									// increased.
 		((Territory) fields.getField(1)).setOwner(Seb);
 		((Territory) fields.getField(3)).setOwner(Seb);
 		((Territory) fields.getField(3)).buyBuildings("House", 4, Seb);
@@ -114,7 +132,10 @@ public class LandOnFieldTerritory {
 	}
 
 	@Test
-	public void testBuyHotel() {
+	public void testBuyHotel() { // That the if you own all associated
+									// Territories that you can buy a hotel
+									// (price = 4000, when no houses are owned)
+									// and that the rent is increased.
 		((Territory) fields.getField(1)).setOwner(Seb);
 		((Territory) fields.getField(3)).setOwner(Seb);
 		((Territory) fields.getField(3)).buyBuildings("Hotel", 1, Seb);
