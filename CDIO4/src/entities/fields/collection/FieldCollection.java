@@ -85,7 +85,7 @@ public class FieldCollection
 		fields[30] = new GoToJail("Go to jail", "go to jail", 30);
 
 		//Brewery
-		fields[16] = new Brewery ("Tuborg","Tuborg: Price 3000",16, 3000, 10, diceone, this);
+		fields[16] = new Brewery ("Tuborg","Tuborg: Price 3000",16, 3000, 100, diceone, this);
 		fields[28] = new Brewery("Coca-Cola", "Coca-Cola: Price 3000", 28, 3000, 100, diceone, this);
 
 		//Parking
