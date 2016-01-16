@@ -24,7 +24,6 @@ public class LandOnFieldFleet {
 	public void setUp() throws Exception {
 
 		this.p2 = new Player("Bob", 5000);
-		// fieldCollection.initialize();
 	}
 
 	@After

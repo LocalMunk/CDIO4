@@ -46,12 +46,11 @@ public class BailJail {
 	@Test
 	public void testPayToBailJail() {
 
-		int actual = Søren.getAccount().getBalance();
 		int expectedBalance = 500;
 		tojail.landOnField(Søren);
 		controller.handle(Søren, dice);
 		assertFalse(Søren.getJailed());
-		assertEquals(expectedBalance, actual);
+		assertEquals(expectedBalance, Søren.getAccount().getBalance());
 	}
 	@Test
 	public void testBailJail3Rounds() {
