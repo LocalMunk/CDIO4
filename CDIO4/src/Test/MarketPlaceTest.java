@@ -2,10 +2,8 @@ package Test;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 
-import desktop_resources.GUI;
 import entities.fields.abstracts.Field;
 import entities.fields.collection.FieldCollection;
 import entities.fields.ownable.Territory;

@@ -173,24 +173,6 @@ public class FieldCollection
 		
 	}
 
-//	public Field[] getOwnedTerritories(Player player)
-//	{
-//		Field[] fields = new Field[player.getFieldsOwned()];
-//		int i = 0;
-//
-//		for(Field field : this.getFieldList())
-//		{
-//			Player owner = field.getOwner();
-//			if(field instanceof Territory && owner != null && owner == player) 
-//			{
-//				fields[i] = field;
-//				i++;
-//			}
-//		}
-//
-//		return fields;
-//	}
-
 	public String[] getFieldNames(Field[] fields)
 	{
 		String[] fieldNames = new String[fields.length];
