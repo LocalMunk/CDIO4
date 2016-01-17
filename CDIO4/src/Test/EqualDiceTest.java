@@ -9,6 +9,7 @@ import game.Turn;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import desktop_resources.GUI;
@@ -33,6 +34,7 @@ public class EqualDiceTest {
 		this.dice2 = new Dice(1); // The dice now only have 1 side so they will always be equal
 		this.Bob = new Player("Bob", 10000);
 		this.Niels = new Player("Niels", 10000);
+		this.turn = new Turn();
 		GUI.addPlayer(this.Bob.getName(), Bob.getAccount().getBalance());
 		GUI.addPlayer(this.Niels.getName(), Niels.getAccount().getBalance());
 	}
@@ -52,7 +54,7 @@ public class EqualDiceTest {
 		dice.roll();
 		assertTrue(dice.getEquals());
 		tur2 = turn.getCheck();
-		assertTrue(tur==tur2);
+		Assert.assertEquals(tur, tur2);
 		
 		
 		
