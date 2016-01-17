@@ -243,7 +243,7 @@ public class Territory extends Ownable
 			{
 				account.withdraw(hotelPrice);
 				this.hotels = numberOfBuildings;
-				this.houses = 4; 
+				this.houses = this.MAX_HOUSES; 
 				GUI.setHotel(this.fieldID+1, true);
 			}
 			

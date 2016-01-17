@@ -43,9 +43,5 @@ public class ChanceCardsTest {
 		moneyDifference = Bob.getAccount().getBalance() - moneyLastRound;
 		GUI.setBalance("Money Difference", moneyDifference);
 		assertEquals(Bob.getAccount().getBalance(), moneyLastRound + moneyDifference);
-			
-			
-			
-		
 	}
 }
