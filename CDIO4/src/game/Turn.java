@@ -6,21 +6,19 @@ public class Turn
 {
 
 	private int check;
-	private GameController control;
 
-	public Turn(GameController a)
+	public Turn()
 	{
 		check = 1;
-		control = a;
 
 	}
 
 	/**
 	 * changes the turn of the players
 	 */
-	public void change()
+	public void change(int numberOfPlayers)
 	{
-		if (check == control.getamountop())
+		if (check == numberOfPlayers)
 		{
 			check = 1;
 		}

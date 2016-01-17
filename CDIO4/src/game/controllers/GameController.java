@@ -81,7 +81,7 @@ public class GameController
 			GUI.setCar(1, name);
 		}
 
-		turn = new Turn(this);
+		turn = new Turn();
 		dice = new Dice(6);
 	}
 
@@ -142,7 +142,7 @@ public class GameController
 		{
 			equaldicecounter = 0;
 		}
-		turn.change();
+		turn.change(this.getamountop());
 	}
 
 	private void checkForTooManySameDice(Player player) {
