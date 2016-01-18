@@ -27,8 +27,11 @@ public class MarketPlaceController
 	}
 
 
-	private Field[] offerPlayerToBuyHouses(Player player, FieldCollection fieldCollection,
-			Field[] ownedFieldBuildable) {
+	private Field[] offerPlayerToBuyHouses(
+		Player player,
+		FieldCollection fieldCollection,
+		Field[] ownedFieldBuildable)
+	{
 		String[] fieldNames = fieldCollection.getFieldNames(ownedFieldBuildable);
 		
 		//Get the field that the player selects
@@ -62,11 +65,10 @@ public class MarketPlaceController
 		if(ownedFields != null && ownedFields.length != 0)
 		{
 			while(ownedFields != null && ownedFields.length != 0 && GUI.getUserLeftButtonPressed("Do you want to sell any territories?", "Yes", "No"))
-			{
-				String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
-				
+			{	
 				Player buyingPlayer = getPlayerByName(GUI.getUserSelection("Choose a player to sell to", getPlayerNamesExcept(players, player)), players);
 				
+				String[] fieldNames = fieldCollection.getFieldNames(ownedFields);
 				Ownable chosenField = (Ownable) fieldCollection.getFieldByName(GUI.getUserSelection("Choose a property", fieldNames));
 				
 				int price = GUI.getUserInteger("How much does " + chosenField.getName() + " cost?", 0, buyingPlayer.getAccount().getBalance() - 1);
