@@ -24,7 +24,6 @@ public class GameController
 	private FieldCollection fieldCollection;
 	private MarketPlaceController marketPlace;
 	private JailController jail;
-	private String y;
 	private int amountofplayers;
 	private int equaldicecounter;
 
