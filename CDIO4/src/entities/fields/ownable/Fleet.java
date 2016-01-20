@@ -35,7 +35,7 @@ public class Fleet extends Ownable
 		//int checker =  ; // fix this
 		 int num = fieldCollection.getAmountFleetsOwned(owner);
 		
-		return rent[num-1];
+		return rent[num-1]; // -1 får at få det til at passe med array'et
 
 	}
 
@@ -101,7 +101,7 @@ public class Fleet extends Ownable
 	@Override
 	public int getPrice()
 	{
-		return 0;
+		return 0; //burde returne price //burde slet ikk være der, da prisen ligger hvor man opretter feltet
 	}
 
 	@Override

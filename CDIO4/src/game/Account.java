@@ -45,7 +45,7 @@ public class Account
 	{
 		if (give > 0)
 		{
-			balance += give;
+			balance += give; //balance = balance + give
 			System.out.println("Deposit successful");
 		}
 		else

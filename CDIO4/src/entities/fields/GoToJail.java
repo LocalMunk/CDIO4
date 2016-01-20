@@ -19,7 +19,6 @@ public class GoToJail extends Field {
 			GUI.removeAllCars(player.getName());
 			GUI.setCar(11, player.getName());
 			}
-		
 	}
 
 }

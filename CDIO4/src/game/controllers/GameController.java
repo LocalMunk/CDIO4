@@ -24,7 +24,6 @@ public class GameController
 	private FieldCollection fieldCollection;
 	private MarketPlaceController marketPlace;
 	private JailController jail;
-	private String y;
 	private int amountofplayers;
 	private int equaldicecounter;
 
@@ -65,7 +64,7 @@ public class GameController
 			String name;
 			name = GUI.getUserString("What is your name?");
 
-			do
+			do //kører igennem mindst en gang m. do-while, i forhold til kun while
 			{
 				if (checkName(name))
 					doContinue = false;

@@ -46,7 +46,7 @@ public class Territory extends Ownable
 		this.groupName = groupName;
 	}
 
-	public Territory()
+	public Territory() //konstruktør uden parametre, som bruges til getOwnedFieldsOfType, da den kun bruger typen af felt, og ikke behøver alle parametrene
 	{
 		super("", "", 0, 0);
 		// TODO Auto-generated constructor stub
@@ -203,7 +203,7 @@ public class Territory extends Ownable
 				i++;
 		}
 		
-		return i;
+		return i; //finder antal grønne felter
 	}
 	
 	public boolean isTerritoryBuildable(Territory territory, Field[] playerFields, Field[] allFields)

@@ -19,12 +19,12 @@ public class ChanceCardCollection
 		chances[9] = new ChanceCard("Shoe sale, you went crazy and spent 250", 250);
 	}
 		
-	public ChanceCard[] getCardList()
+	public ChanceCard[] getCardList() //returneger listen
 	{
 		return chances;
 	}
 	
-	public ChanceCard getCard(int index)
+	public ChanceCard getCard(int index)// returnerer et kort
 	{
 		return chances[index];
 	}

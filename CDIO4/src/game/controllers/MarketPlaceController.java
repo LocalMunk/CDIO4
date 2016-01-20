@@ -45,6 +45,7 @@ public class MarketPlaceController
 		else
 			buildingType = "House";
 		
+		//Fjerner alt der ikke er tal med ingenting (dvs fjerner det helt) så vi kun har antal af huse/hoteller som skal bygges
 		int numberOfBuildings = Integer.parseInt(choice.replaceAll("[\\D]", ""));
 		
 		chosenField.buyBuildings(buildingType, numberOfBuildings, player);
